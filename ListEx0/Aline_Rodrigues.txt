@@ -1,1 +1,2 @@
 commit
+resolver conflito na master
