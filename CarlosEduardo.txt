@@ -1,2 +1,0 @@
-ListEx 0:
-site: https://sites.google.com/view/eduardolimacesl/
