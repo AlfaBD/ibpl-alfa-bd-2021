@@ -1,2 +1,2 @@
 Primeiro commit.
-Editado com AlfaBD para criar conflito.
+Escrito na mesma linha do alfaBD.
