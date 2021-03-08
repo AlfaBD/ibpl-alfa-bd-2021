@@ -1,2 +1,2 @@
 Primeiro commit.
-Commit na branch.
+Conflito criado.
