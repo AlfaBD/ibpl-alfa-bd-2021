@@ -1,3 +1,0 @@
-Meu primeiro commit na branch main!
-Meu primeiro merge!
-Conflito Resolvido !
