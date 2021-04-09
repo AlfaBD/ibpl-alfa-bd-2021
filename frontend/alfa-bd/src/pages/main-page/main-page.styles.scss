@@ -1,0 +1,17 @@
+.main-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 50px;
+
+  .large-menu-section {
+    margin: 10px;
+  }
+
+  .small-menu-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+  }
+}
