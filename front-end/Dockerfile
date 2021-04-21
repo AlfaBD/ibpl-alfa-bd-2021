@@ -1,5 +1,5 @@
 # Imagem de Origem
-FROM node:13-alpine
+FROM node:13
 # Diretório de trabalho(é onde a aplicação ficará dentro do container).
 WORKDIR /app
 # Adicionando `/app/node_modules/.bin` para o $PATH
