@@ -2,6 +2,12 @@
 const _nav =  [
   {
     _tag: 'CSidebarNavItem',
+    name: 'Escolas',
+    to: '/cadastro/escola',
+    icon: 'cil-pencil',
+  },
+  {
+    _tag: 'CSidebarNavItem',
     name: 'Professores',
     to: '/cadastro/professor',
     icon: 'cil-puzzle',

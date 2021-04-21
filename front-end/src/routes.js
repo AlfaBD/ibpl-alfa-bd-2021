@@ -46,7 +46,7 @@ const User = React.lazy(() => import('./views/users/User'));
 */
 const Aluno = React.lazy(() => import('./views/cadastro/aluno/Aluno'));
 const Professor = React.lazy(() => import('./views/cadastro/professor/Professor'));
-//const Escola = React.lazy(() => import('./views/cadastro/escola/Escola'));
+const Escola = React.lazy(() => import('./views/cadastro/escola/Escola'));
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'));
 
 const routes = [
@@ -94,6 +94,7 @@ const routes = [
   { path: '/cadastro', name: 'Cadastro', component: Aluno, exact: true },
   { path: '/cadastro/aluno', name: 'Aluno', component: Aluno },
   { path: '/cadastro/professor', name: 'Professor', component: Professor },
+  { path: '/cadastro/escola', name: 'Escola', component: Escola },
 
 ];
 
