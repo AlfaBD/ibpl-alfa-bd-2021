@@ -17,7 +17,6 @@ USE `alfadb` ;
 -- -----------------------------------------------------
 -- Table `alfadb`.`school`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `alfadb`.`school` ;
 
 CREATE TABLE IF NOT EXISTS `alfadb`.`school` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -37,7 +36,6 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 -- Table `alfadb`.`class`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `alfadb`.`class` ;
 
 CREATE TABLE IF NOT EXISTS `alfadb`.`class` (
   `id` INT NOT NULL,
@@ -58,7 +56,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `alfadb`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `alfadb`.`user` ;
 
 CREATE TABLE IF NOT EXISTS `alfadb`.`user` (
   `id` INT NOT NULL,
@@ -79,7 +76,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `alfadb`.`teacher`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `alfadb`.`teacher` ;
 
 CREATE TABLE IF NOT EXISTS `alfadb`.`teacher` (
   `user_id` INT NOT NULL,
@@ -104,7 +100,6 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `alfadb`.`student`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `alfadb`.`student` ;
 
 CREATE TABLE IF NOT EXISTS `alfadb`.`student` (
   `user_id` INT NOT NULL,
