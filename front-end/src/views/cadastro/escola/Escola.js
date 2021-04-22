@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import {
-  CBadge,
+  CButton,
   CCard,
   CCardBody,
+  CCardFooter,
+  CForm,
+  CInput,
+  CInputGroup,
+  CInputGroupPrepend,
+  CInputGroupText,
+  CBadge,
   CCardHeader,
   CCol,
   CDataTable,
   CRow,
   CPagination
 } from '@coreui/react'
+
+import CIcon from '@coreui/icons-react'
 
 import usersData from './EscolasData'
 
@@ -30,7 +39,7 @@ const Escola = () => {
   const [page, setPage] = useState(currentPage)
 
   const pageChange = newPage => {
-    currentPage !== newPage && history.push(`/users?page=${newPage}`)
+    currentPage !== newPage && history.push(`/cadastro/escola?page=${newPage}`)
   }
 
   useEffect(() => {
@@ -38,26 +47,120 @@ const Escola = () => {
   }, [currentPage, page])
 
   return (
-    <CRow>
-      <CCol xl={6}>
+    <div>
+    <CRow className="justify-content-center">
+      <CCol md="12" lg="12" xl="12">
+        <CCard>
+          <CCardBody className="p-4">
+            <CForm>
+              <h1>Escola</h1>
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                  <CInputGroupText>
+                    <CIcon name="cil-paperclip" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="text" placeholder="Nome" autoComplete="Nome" />
+              </CInputGroup>
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                <CInputGroupText>
+                    <CIcon name="cil-paperclip" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="number" placeholder="CNPJ" autoComplete="CNPJ" />
+              </CInputGroup>
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                <CInputGroupText>
+                    <CIcon name="cil-paperclip" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="number" placeholder="Código do INEP/MEC" autoComplete="" />
+              </CInputGroup>
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                <CInputGroupText>
+                    <CIcon name="cil-paperclip" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="text" placeholder="Município" autoComplete="Municipio" />
+              </CInputGroup>
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                <CInputGroupText>
+                    <CIcon name="cil-paperclip" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="text" placeholder="Estado" autoComplete="Estado" />
+              </CInputGroup>
+              <p className="text-muted">Acesso</p>
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                <CInputGroupText>
+                    <CIcon name="cil-paperclip" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="text" placeholder="E-mail" autoComplete="email" />
+              </CInputGroup>
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                  <CInputGroupText>
+                    <CIcon name="cil-paperclip" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="tel" placeholder="Número Celular" autoComplete="Numero Celular" />
+              </CInputGroup>
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                  <CInputGroupText>
+                    <CIcon name="cil-lock-locked" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="password" placeholder="Senha" autoComplete="new-password" />
+              </CInputGroup>
+              <CInputGroup className="mb-4">
+                <CInputGroupPrepend>
+                  <CInputGroupText>
+                    <CIcon name="cil-lock-locked" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CInput type="password" placeholder="Repita a senha" autoComplete="new-password" />
+              </CInputGroup>
+            </CForm>
+          </CCardBody>
+          <CCardFooter className="p-4">
+            <CRow>
+              <CCol xs="12" sm="12">
+                <CButton color="success" block>Cadastrar</CButton>
+              </CCol>
+            </CRow>
+          </CCardFooter>
+        </CCard>
+      </CCol>
+    </CRow>
+    <CRow className="justify-content-center">
+      <CCol md="12" lg="12" xl="12">
         <CCard>
           <CCardHeader>
-            Users
-            <small className="text-muted"> example</small>
+            Escolas
           </CCardHeader>
           <CCardBody>
           <CDataTable
             items={usersData}
             fields={[
-              { key: 'name', _classes: 'font-weight-bold' },
-              'registered', 'role', 'status'
+              { key: 'use_name', _classes: 'font-weight-bold', label: 'Nome' },
+              { key: 'cnpj', label: 'CNPJ'},
+              { key: 'codigo', label: 'Código INEP/MEC'},
+              { key: 'city', label: 'Município'},
+              { key: 'state', label: 'Estado'}
             ]}
             hover
             striped
             itemsPerPage={5}
             activePage={page}
             clickableRows
-            onRowClick={(item) => history.push(`/users/${item.id}`)}
+            onRowClick={(item) => history.push(`/cadastro/escola/${item.id}`)}
             scopedSlots = {{
               'status':
                 (item)=>(
@@ -80,6 +183,7 @@ const Escola = () => {
         </CCard>
       </CCol>
     </CRow>
+    </div>
   )
 }
 
