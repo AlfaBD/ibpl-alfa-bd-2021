@@ -14,10 +14,7 @@ const TheFooter = () => {
         </a>
         <span className="ml-1">&copy; 2021 ITA.</span>
       </div>
-      <div className="mfs-auto">
-        <span className="mr-1"></span>
-        <a href="" target="_blank" rel="noopener noreferrer"></a>
-      </div>
+      <div className="mfs-auto"></div>
     </CFooter>
   );
 };
