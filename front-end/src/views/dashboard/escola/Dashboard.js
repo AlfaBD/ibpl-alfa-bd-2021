@@ -14,21 +14,21 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
-import MainChartExample from '../charts/MainChartExample.js'
+import MainChartExample from '../../charts/MainChartExample.js'
 
-const WidgetsDropdown = lazy(() => import('../widgets/WidgetsDropdown.js'))
-const WidgetsBrand = lazy(() => import('../widgets/WidgetsBrand.js'))
+const WidgetsDropdown = lazy(() => import('../../widgets/WidgetsDropdown.js'))
+const WidgetsBrand = lazy(() => import('../../widgets/WidgetsBrand.js'))
 
 const Dashboard = () => {
   return (
-    <>
+    <div>
       <WidgetsDropdown />
       <CCard>
         <CCardBody>
           <CRow>
             <CCol sm="5">
-              <h4 id="traffic" className="card-title mb-0">Traffic</h4>
-              <div className="small text-muted">November 2021</div>
+              <h4 id="traffic" className="card-title mb-0">Historico</h4>
+              <div className="small text-muted">November 2020</div>
             </CCol>
             <CCol sm="7" className="d-none d-md-block">
               <CButton color="primary" className="float-right">
@@ -550,7 +550,7 @@ const Dashboard = () => {
           </CCard>
         </CCol>
       </CRow>
-    </>
+    </div>
   )
 }
 
