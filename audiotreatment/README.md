@@ -110,7 +110,7 @@ def alfa_bd_AT(src,dst):
 ---
 Estando no mesmo diretório contendo os arquivos/ ou escrevendo o caminho relativo do arquivo de entrada, utilizar o exemplo de áudio abaixo.
 
-[Áudio ruim](/exemplo_audio_ruim.wav)
+[Áudio ruim](https://github.com/AlfaBD/ibpl-alfa-bd-2021/blob/homologacao/audiotreatment/exemplo_audio_ruim.wav)
 
 Então, dentro do script, utilizar a função abaixo:
 
@@ -119,4 +119,4 @@ raw, fix = alfa_bd_AT("exemplo_audio_ruim.wav","exemplo_audio_recuperado.mp3")
 ```
 Será então criado um arquivo exemplo_audio_recuperado.wav no mesmo diretório, mostrado abaixo.
 
-[Áudio recuperado](/exemplo_audio_recuperado.wav)
+[Áudio recuperado](https://github.com/AlfaBD/ibpl-alfa-bd-2021/blob/homologacao/audiotreatment/exemplo_audio_recuperado.wav)
