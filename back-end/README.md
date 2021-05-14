@@ -17,7 +17,7 @@ Instale todas as dependências necessárias:
 npm install
 ```
 
-Em seguida, é necessário configurar umas instância do banco de dados MySQL localmente para o correto funcionamento do backend. Para isso, siga as etapas indicadas no tutorial abaixo:
+Em seguida, é necessário configurar uma instância do banco de dados MySQL localmente para o correto funcionamento do backend. Para isso, siga as etapas indicadas no tutorial abaixo:
 
 [Configurando MySQL no Windows](https://www.alura.com.br/artigos/mysql-do-download-e-instalacao-ate-sua-primeira-tabela#:~:text=Configura%C3%A7%C3%A3o%20do%20servidor%20MySQL%3A%20escolha,em%20um%20servidor%20de%20produ%C3%A7%C3%A3o.)
 
