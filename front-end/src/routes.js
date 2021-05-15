@@ -8,7 +8,6 @@ const Aluno = React.lazy(() => import("./views/cadastro/aluno/Aluno"));
 const Professor = React.lazy(() => import("./views/cadastro/professor/Professor"));
 const Escola = React.lazy(() => import("./views/cadastro/escola/Escola"));
 
-const Dashboard = React.lazy(() => import("./views/dashboard/Dashboard"));
 const DashboardEscola = React.lazy(() => import("./views/dashboard/escola/Dashboard"));
 const DashboardProfessor = React.lazy(() => import("./views/dashboard/professor/Dashboard"));
 const DashboardAluno = React.lazy(() => import("./views/dashboard/aluno/Dashboard"));

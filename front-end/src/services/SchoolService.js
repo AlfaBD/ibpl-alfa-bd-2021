@@ -1,17 +1,37 @@
-import { get, post, update } from "./apiService";
+import { get, post, update } from "./ApiService";
 
-export async function index() {
-  return get("/school");
+
+
+export default {
+  index() {
+    return get("/school");
+  },
+  store() {
+    return post("/school");
+  },
+  show() {
+    return get("/school");
+  },
+  updateStudent() {
+    return update("/student");
+  },
+  updateTeacher() {
+    return update("/teacher");
+  },
+  updateClass() {
+    return update("/class");
+  },
+  
+  // Endpoints Dahsboard
+  get_classes() {
+    return get("/classes");
+  },
+  get_tasks() {
+    return get("/tasks");
+  },
+  get_evaluations(classes) {
+    return get("/evaluations");
+  }
 }
-export async function store() {
-  return post("/school");
-}
-export async function show() {
-  return get("/school");
-}
-export async function update() {
-  return update("/school");
-}
-export async function destroy() {
-  return update("/school");
-}
+
+
