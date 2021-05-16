@@ -16,6 +16,6 @@ module.exports = {
         } 
     },
     buildAssociations: (models) => {
-        
+        models.Class.belongsToMany(models.User, { foreignKey: 'cla_id', through: models.Attendance} );
     }
 }

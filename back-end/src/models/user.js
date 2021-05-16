@@ -34,6 +34,11 @@ module.exports = {
         }
     },
     buildAssociations: (models) => {
-        //models
+        models.User.hasMany(models.Answer, { foreignKey: 'usr_id'} );
+        models.User.hasMany(models.Question, { foreignKey: 'usr_id'} );
+        models.User.hasMany(models.Task, { foreignKey: 'usr_id'} );
+        models.User.belongsToMany(models.Class, { foreignKey: 'usr_id', through: models.Attendance} );
+        models.User.belongsTo(models.Role, { as: 'primaryRole', foreignKey: 'usr_primary_role'} );
+        models.User.belongsTo(models.Role, { as: 'secondaryRole', foreignKey: 'usr_secondary_role'} );
     }
 }

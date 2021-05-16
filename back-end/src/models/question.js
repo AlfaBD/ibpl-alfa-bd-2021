@@ -28,6 +28,6 @@ module.exports = {
         }
     },
     buildAssociations: (models) => {
-        //models
+        models.Question.hasMany(models.Task, { foreignKey: 'que_id'} );
     }
 }

@@ -12,7 +12,5 @@ module.exports = {
             type: DataTypes.STRING
         }
     },
-    buildAssociations: (models) => {
-        //models
-    }
+    buildAssociations: (models) => {}
 }
