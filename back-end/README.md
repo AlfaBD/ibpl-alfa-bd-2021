@@ -15,11 +15,8 @@ Instale todas as dependências necessárias:
 
 ```
 npm install
-```
-||CASO ESTEJA USANDO WINDOWS||
-Caso esteja usando Windows, instale as seguintes dependências:
-    - npm install -D cross-env
-    - npm install mysql2
+npm install -D cross-env
+npm install mysql2
 
 Em seguida, é necessário configurar uma instância do banco de dados MySQL localmente para o correto funcionamento do backend. Para isso, siga as etapas indicadas no tutorial abaixo:
 
