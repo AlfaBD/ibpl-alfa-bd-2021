@@ -39,6 +39,13 @@ const _nav = [
     icon: "cil-pencil",
     ataCy: "escola",
   },
+  {
+    _tag: "CSidebarNavItem",
+    name: "Dashboard Admin",
+    to: "/dashboard/admin",
+    icon: "cil-pencil",
+    ataCy: "administrador",
+  }
   
 ];
 
