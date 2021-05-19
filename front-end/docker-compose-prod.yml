@@ -1,9 +1,0 @@
-version: '3.3'
-services:
-    app-prod:
-        container_name: front-end-prod
-        build:
-           context: .
-           dockerfile: Dockerfile-prod
-        ports:
-           - '3333:80'
