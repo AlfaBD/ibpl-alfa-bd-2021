@@ -1,0 +1,26 @@
+// Variable overrides
+
+$theme-colors: (
+  "primary": #2e7d32,
+  "secondary": #ef6c00,
+  "success": #2e7d32,
+  "info": #406AEF,
+);
+
+$colors: (
+  "orange": #ef6c00,
+  "green": #2e7d32,
+  "blue": #406AEF,
+);
+
+.c-sidebar {
+    color: #fff ;
+    background: #2e7d32 !important;
+}
+
+.card {
+  background-color: #ffffffd6 !important;
+  border-color: #d8dbe000 !important;
+}
+
+
