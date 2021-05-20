@@ -112,8 +112,6 @@ const Dashboard = () => {
         </CCardFooter>
       </CCard>
 
-      <WidgetsBrand withCharts/>
-
       <CRow>
         <CCol>
           <CCard>
@@ -307,14 +305,14 @@ const Dashboard = () => {
               <br />
 
              
-               <CCard>
+               {/* <CCard>
                 <CCardHeader>
                   <h1>Tipos de usuário</h1> 
                 </CCardHeader>
-               </CCard>
+               </CCard> */}
 
             
-              <div>
+              {/* <div>
                 <CDropdown className="mt-2">
                   <CDropdownToggle caret color="info">
                    Selecione o tipo de Usuário
@@ -331,14 +329,10 @@ const Dashboard = () => {
                     <CDropdownItem divider />
                   </CDropdownMenu>
                 </CDropdown>
-              </div>
+              </div> */}
              
 
                 <br />
-                <br />
-                <br />
-                <br />
-
 
               <CCard>
                 <CCardHeader>
@@ -580,9 +574,6 @@ const Dashboard = () => {
               </table>
 
 
-                <br />
-                <br />
-                <br />
                 <br />
 
 
