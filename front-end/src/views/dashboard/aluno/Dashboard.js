@@ -1,16 +1,16 @@
 import React, { lazy } from 'react'
 import {
-  CBadge,
-  CButton,
+  /* CBadge,
   CButtonGroup,
+  CCardFooter,
+  CCallout, */
+  CButton,
   CCard,
   CCardBody,
-  CCardFooter,
   CCardHeader,
   CCol,
   CProgress,
   CRow,
-  CCallout
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
