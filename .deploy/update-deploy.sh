@@ -17,7 +17,7 @@ if [ $LOCAL = $BASE ]; then
     git pull
 
     # Building new image
-    docker build -t "alfabd:develop"
+    docker build -t "alfabd:develop" .
 
     # Deploying new image
     docker run -d -p 8000:80 --name=alfabd alfabd:develop
