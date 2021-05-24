@@ -20,5 +20,5 @@ if [ $LOCAL = $BASE ]; then
     docker build -t "alfabd:develop"
 
     # Deploying new image
-    docker run -d -p 80:80 --name=alfabd alfabd:develop
+    docker run -d -p 8000:80 --name=alfabd alfabd:develop
 fi
