@@ -1,13 +1,14 @@
 
 #!/usr/bin/env bash
-set -Eeo pipefail
 
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse "$UPSTREAM")
 BASE=$(git merge-base @ "$UPSTREAM")
 
-if [ $LOCAL = $BASE ]; then
+if [ $LOCAL = $REMOTE ]; then
+    echo "Up-to-date"
+elif [ $LOCAL = $BASE ]; then
     echo "Updating deploy"
     docker stop alfabd || true
     docker rm alfabd || true
