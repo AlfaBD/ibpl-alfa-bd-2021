@@ -1,6 +1,5 @@
 
 #!/usr/bin/env bash
-set -Eeo pipefail
 
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
