@@ -1,23 +1,23 @@
 const router = require('express');
 const route = router();
+const StudentController = require('../../controllers/StudentController');
 
 module.exports = (app) => {
+  //All routes under this file will be prefixed with /student
+  app.use('/student', route);
 
-    //All routes under this file will be prefixed with /student
-    app.use('/student', route);
+  //Get all student information
+  route.get('/', StudentController.index);
 
-    //Get all student information
-    route.get( '/', (req, res, next) => {});
+  //Get a specific student information
+  route.get('/:studentId', StudentController.show);
 
-    //Get a specific student information
-    route.get( '/:studentId', (req, res, next) => {});
+  //Create a new student
+  route.post('/', StudentController.store);
 
-    //Create a new student
-    route.post( '/', (req, res, next) => {});
+  //Update a student information
+  route.put('/:studentId', StudentController.update);
 
-    //Update a student information
-    route.put( '/:studentId', (req, res, next) => {});
-
-    //Delete a specific student
-    route.delete( '/:studentId', (req, res, next) => {});
+  //Delete a specific student
+  route.delete('/:studentId', StudentController.delete);
 };

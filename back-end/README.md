@@ -15,8 +15,6 @@ Instale todas as dependências necessárias:
 
 ```
 npm install
-npm install -D cross-env
-npm install mysql2
 
 Em seguida, é necessário configurar uma instância do banco de dados MySQL localmente para o correto funcionamento do backend. Para isso, siga as etapas indicadas no tutorial abaixo:
 
@@ -25,19 +23,27 @@ Em seguida, é necessário configurar uma instância do banco de dados MySQL loc
 Uma vez configurado, crie um novo usuário e um novo banco de dados com as seguintes credenciais:
 
 ```
+
 Usuário: alfabd
 Senha: alfabd
 Banco de dados: alfabd
+
 ```
 
 Por fim, basta rodar o seguinte comando para iniciar o backend:
 
 ```
+
 npm run start-dev
+ou
+yarn install
+
 ```
+
 
 ## Estrutura do backend
 
 O código do backend foi estruturado de tal forma a possibilidar um desenvolvimento ágil e eficaz de cada time. Para isso, foram criados arquivos de rotas para cada uma das entidades do projeto: Aluno, Professor e Escola. Estes arquivos estão definidos no diretório /api/routes/.
 
 Todas as consultas e iterações com o banco de dados estão definidas nos arquivos de models. Cada arquivo de model deve ser usado para a escrita das respectivas consultas ao banco de dados que sejam necessárias para a correta manipulação da informação.
+```

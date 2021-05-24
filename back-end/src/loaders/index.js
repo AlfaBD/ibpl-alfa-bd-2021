@@ -12,7 +12,7 @@ const loaders = (async = (settings = {}) => {
 
       //Extra loaders can come here! e.g: database loader
       console.log('[LOADERS] - Loader files runned');
-      
+
       return { app, db };
     } catch (err) {
       console.error('[LOADERS] - Error running loader files');
