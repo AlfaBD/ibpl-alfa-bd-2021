@@ -9,6 +9,7 @@ import {
   CCardBody,
   CCardHeader,
   CCol,
+  CLink,
   CProgress,
   CRow,
 } from '@coreui/react'
@@ -218,9 +219,9 @@ const DashAluno = () => {
                 <tbody>
                   <tr>
                     <td>
-                      <CButton color="link">
+                      <CLink href='/aluno/atividade'>
                         <span>289277</span>
-                      </CButton>
+                      </CLink>
                       {/* <div className="small text-muted">
                         <span>New</span> | Registered: Jan 1, 2015
                       </div> */}
