@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 git fetch --all
@@ -23,5 +22,9 @@ elif [ $LOCAL = $BASE ]; then
     docker build -t "alfabd:develop" .
 
     # Deploying new image
-    docker run -d -p 8000:80 --name=alfabd alfabd:develop
+    if [[ $ALFABD_BASE_URL ]]; then
+        docker run -d -p 8000:80 -e ALFABD_BASE_URL="$ALFABD_BASE_URL" --name=alfabd alfabd:develop
+    else
+        docker run -d -p 8000:80 -e --name=alfabd alfabd:develop
+    fi
 fi

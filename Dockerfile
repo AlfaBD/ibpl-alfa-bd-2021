@@ -1,5 +1,7 @@
 FROM node:13 as build
 
+ENV ALFABD_BASE_URL="http://localhost:3001"
+
 # app
 WORKDIR /app
 COPY . /app/
