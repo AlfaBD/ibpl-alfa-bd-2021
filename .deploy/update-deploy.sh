@@ -1,12 +1,12 @@
 
 #!/usr/bin/env bash
 
+git fetch --all
+
 UPSTREAM=${1:-'@{u}'}
 LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse "$UPSTREAM")
 BASE=$(git merge-base @ "$UPSTREAM")
-
-git fetch --all
 
 if [ $LOCAL = $REMOTE ]; then
     echo "Up-to-date"
