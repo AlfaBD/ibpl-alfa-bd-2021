@@ -13,6 +13,7 @@ import {
   CCallout
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import AudioRecordingPage from '../gravador/audio'
 
 
 const Atividade = () => {
@@ -28,12 +29,9 @@ const Atividade = () => {
               <h4>Aperte o microfone e leia o seguinte texto:</h4>
               <h2>"este é um exemplo de atividade que deverá ser lida pelo aluno"</h2>
               <br/>
-              <div className="text-center">
-                <CIcon height={25} name="cilCalendar" />
-              </div>
               <br/>
               <br/>
-              <div>AQUI VAI O MóDULO DE CAPTURA DE AUDIO</div>
+              <div className="text-center"><AudioRecordingPage/></div>
             </CCardBody>
           </CCard>
         </CCol>

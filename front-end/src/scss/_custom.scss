@@ -1,2 +1,10 @@
 // Here you can add other styles
 
+.main-recorder{
+    display: flex;
+    flex-direction: column;
+}
+
+.player{
+    align-self: center;
+}
