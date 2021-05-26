@@ -9,10 +9,12 @@ import {
   CCardBody,
   CCardHeader,
   CCol,
+  CLink,
   CProgress,
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { Link } from 'react-router-dom'
 
 // import MainChartExample from '../charts/MainChartExample.js'
 
@@ -218,9 +220,9 @@ const DashAluno = () => {
                 <tbody>
                   <tr>
                     <td>
-                      <CButton color="link">
-                        <span>289277</span>
-                      </CButton>
+                      <Link to='/aluno/atividade'>
+                        <a>289277</a>
+                      </Link>
                       {/* <div className="small text-muted">
                         <span>New</span> | Registered: Jan 1, 2015
                       </div> */}
