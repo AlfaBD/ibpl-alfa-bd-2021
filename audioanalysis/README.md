@@ -4,7 +4,9 @@
 
 # Documentação dos Scripts de Análise e Predição dos Áudios US#209 - v1.0
 
-Este repositório tem por objetivo relatar os estudos e as implementações como prova de conceito da análise e métodos prescritivos para avaliar a fluência em leitura atentendo a **US#209: COMO Backup de Scrum Master DESEJO QUE seja implementado um modelo de classificação de texto PARA que seja possível avaliar a fluência.**
+Este repositório tem por objetivo relatar os estudos e as implementações como prova de conceito da análise e modelos preditivos para avaliar a fluência em leitura atentendo a:
+
+ **US#209: COMO Backup de Scrum Master DESEJO QUE seja implementado um modelo de classificação de texto PARA que seja possível avaliar a fluência.**
 
 ## Get Started (Linux - Python3)
 
@@ -30,13 +32,13 @@ jupyter notebook
 
 ## Scripts
 
-- **Exploratory Analysis Audio Data.ipynb**: Análise exploratória dos áudios para detectar algum padrão na frequencia e escalas sonoras utilizadas para análise de áudio. 
+- [**Exploratory Analysis Audio Data.ipynb**](https://github.com/AlfaBD/ibpl-alfa-bd-2021/blob/feature_analise_audio/audioanalysis/Exploratory%20Analysis%20Audio%20Data.ipynb): Análise exploratória dos áudios para detectar algum padrão na frequencia e escalas sonoras utilizadas para análise de áudio. 
 
-- **Convert Speech to Text.ipynb**: Conversão do áudio para texto para análise preditiva.
+- [**Convert Speech to Text.ipynb**](https://github.com/AlfaBD/ibpl-alfa-bd-2021/blob/feature_analise_audio/audioanalysis/Convert%20Speech%20to%20Text.ipynb): Conversão do áudio para texto para análise preditiva.
 
-- **Prediction Naive Bayes (Text).ipynb**: Modelo preditivo criado a partir dos textos.
+- [**Prediction Naive Bayes (Text).ipynb**](https://github.com/AlfaBD/ibpl-alfa-bd-2021/blob/feature_analise_audio/audioanalysis/Prediction%20Naive%20Bayes%20(Text).ipynb): Modelo preditivo criado a partir dos textos.
 
-- **Prediction SVM (Audio).ipynb**: Modelo preditivo a partir das features extraídas dos áudios.
+- [**Prediction SVM (Audio).ipynb**](https://github.com/AlfaBD/ibpl-alfa-bd-2021/blob/feature_analise_audio/audioanalysis/Prediction%20SVM%20(Audio).ipynb): Modelo preditivo a partir das features extraídas dos áudios.
 
 
 ## Conclusões e Recomendações
