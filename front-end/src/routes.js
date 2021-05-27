@@ -12,10 +12,12 @@ const DashboardEscola = React.lazy(() => import("./views/dashboard/escola/Dashbo
 const DashboardProfessor = React.lazy(() => import("./views/dashboard/professor/Dashboard"));
 const DashboardAluno = React.lazy(() => import("./views/dashboard/aluno/Dashboard"));
 const LigaAluno = React.lazy(() => import("./views/aluno/liga"));
+const Login = React.lazy(() => import("./views/pages/login/Login"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
 
+  { path: "/login", name: "Login", component: Login },
 
   { path: "/dashboard/escola", name: "Dashboard Escola", component: DashboardEscola },
   { path: "/dashboard/professor", name: "Dashboard", component: DashboardProfessor },
