@@ -48,7 +48,7 @@ const Professor = () => {
 
   return (
     <CRow>
-      <CCol xl={6}>
+      <CCol xl={7}>
         <CCard className="mx-4">
           <CCardHeader align="center">
             <h4>Cadastro de Professores</h4>
