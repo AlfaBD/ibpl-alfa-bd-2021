@@ -1,5 +1,5 @@
-import React, { lazy } from 'react'
-import {
+import React/*,  { lazy } */ from 'react'
+/* import {
   CBadge,
   CButton,
   CButtonGroup,
@@ -11,8 +11,8 @@ import {
   CProgress,
   CRow,
   CCallout
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+} from '@coreui/react' 
+import CIcon from '@coreui/icons-react'*/
 
 const LigaAluno = () => {
     return (

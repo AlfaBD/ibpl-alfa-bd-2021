@@ -8,17 +8,26 @@ import {
   CCol,
   CDataTable,
   CRow,
-  CPagination
+  CPagination,
+  CButton,
+  CCardFooter,
+  CContainer,
+  CForm,
+  CInput,
+  CInputGroup,
+  CInputGroupPrepend,
+  CInputGroupText,
 } from '@coreui/react'
 
+import CIcon from '@coreui/icons-react'
 import usersData from './ProfessoresData'
 
 const getBadge = status => {
   switch (status) {
-    case 'Active': return 'success'
-    case 'Inactive': return 'secondary'
-    case 'Pending': return 'warning'
-    case 'Banned': return 'danger'
+    case 'Ativo': return 'success'
+    case 'Inativo': return 'secondary'
+    case 'Pendente': return 'warning'
+    case 'Bloqueado': return 'danger'
     default: return 'primary'
   }
 }
@@ -39,18 +48,67 @@ const Professor = () => {
 
   return (
     <CRow>
-      <CCol xl={6}>
-        <CCard>
-          <CCardHeader>
-            Users
-            <small className="text-muted"> example</small>
+      <CCol xl={7}>
+        <CCard className="mx-4">
+          <CCardHeader align="center">
+            <h4>Cadastro de Professores</h4>
+            <small className="text-muted"></small>
+          </CCardHeader>
+            <CCardBody className="p-4">
+              <CForm>
+                <CInputGroup className="mb-3">
+                  <CInputGroupPrepend>
+                    <CInputGroupText>
+                      <CIcon name="cil-user" />
+                    </CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CInput type="text" placeholder="Nome" autoComplete="username" />
+                </CInputGroup>
+                <CInputGroup className="mb-3">
+                  <CInputGroupPrepend>
+                    <CInputGroupText>
+                      <CIcon name="cil-file" />
+                    </CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CInput type="text" placeholder="CPF" autoComplete="cpf" />
+                </CInputGroup>
+                <CInputGroup className="mb-3">
+                  <CInputGroupPrepend>
+                    <CInputGroupText>@</CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CInput type="text" placeholder="Email" autoComplete="email" />
+                </CInputGroup>
+                <CInputGroup className="mb-3">
+                  <CInputGroupPrepend>
+                    <CInputGroupText>
+                      <CIcon name="cil-calendar" />
+                    </CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CInput type="password" placeholder="Data de Nascimento" autoComplete="data de nascimento" />
+                </CInputGroup>
+                <CInputGroup className="mb-4">
+                  <CInputGroupPrepend>
+                    <CInputGroupText>
+                      <CIcon name="cil-lock-locked" />
+                    </CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CInput type="password" placeholder="Senha" autoComplete="senha" />
+                </CInputGroup>
+                <CButton color="success" block>Criar Conta</CButton>
+              </CForm>
+            </CCardBody>
+        </CCard>
+        <CCard className="mx-4">
+          <CCardHeader align="center">
+            <h4>Lista de Professores</h4>
+            <small className="text-muted"></small>
           </CCardHeader>
           <CCardBody>
           <CDataTable
             items={usersData}
             fields={[
-              { key: 'name', _classes: 'font-weight-bold' },
-              'registered', 'role', 'status'
+              { key: 'professor', _classes: 'font-weight-bold' },
+              'registrado', 'função', 'status'
             ]}
             hover
             striped
@@ -73,7 +131,7 @@ const Professor = () => {
             activePage={page}
             onActivePageChange={pageChange}
             pages={5}
-            doubleArrows={false} 
+            doubleArrows={false}
             align="center"
           />
           </CCardBody>
