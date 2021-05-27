@@ -24,10 +24,10 @@ import usersData from './ProfessoresData'
 
 const getBadge = status => {
   switch (status) {
-    case 'Active': return 'success'
-    case 'Inactive': return 'secondary'
-    case 'Pending': return 'warning'
-    case 'Banned': return 'danger'
+    case 'Ativo': return 'success'
+    case 'Inativo': return 'secondary'
+    case 'Pendente': return 'warning'
+    case 'Bloqueado': return 'danger'
     default: return 'primary'
   }
 }
@@ -66,6 +66,14 @@ const Professor = () => {
                 </CInputGroup>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
+                    <CInputGroupText>
+                      <CIcon name="cil-file" />
+                    </CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CInput type="text" placeholder="CPF" autoComplete="cpf" />
+                </CInputGroup>
+                <CInputGroup className="mb-3">
+                  <CInputGroupPrepend>
                     <CInputGroupText>@</CInputGroupText>
                   </CInputGroupPrepend>
                   <CInput type="text" placeholder="Email" autoComplete="email" />
@@ -73,10 +81,10 @@ const Professor = () => {
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
                     <CInputGroupText>
-                      <CIcon name="cil-lock-locked" />
+                      <CIcon name="cil-calendar" />
                     </CInputGroupText>
                   </CInputGroupPrepend>
-                  <CInput type="password" placeholder="Senha" autoComplete="new-password" />
+                  <CInput type="password" placeholder="Data de Nascimento" autoComplete="data de nascimento" />
                 </CInputGroup>
                 <CInputGroup className="mb-4">
                   <CInputGroupPrepend>
@@ -84,7 +92,7 @@ const Professor = () => {
                       <CIcon name="cil-lock-locked" />
                     </CInputGroupText>
                   </CInputGroupPrepend>
-                  <CInput type="password" placeholder="Repita senha" autoComplete="new-password" />
+                  <CInput type="password" placeholder="Senha" autoComplete="senha" />
                 </CInputGroup>
                 <CButton color="success" block>Criar Conta</CButton>
               </CForm>
