@@ -24,7 +24,7 @@ RUN cd back-end && npm install && \
     npm install -g nodemon
 
 # Server
-EXPOSE 8000
+EXPOSE 80
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s /usr/local/bin/entrypoint.sh / # backwards compat
