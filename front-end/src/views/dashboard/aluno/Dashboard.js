@@ -1,9 +1,5 @@
 import React, { lazy } from 'react'
 import {
-  /* CBadge,
-  CButtonGroup,
-  CCardFooter,
-  CCallout, */
   CButton,
   CCard,
   CCardBody,
