@@ -22,16 +22,6 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-      - restore_cache:
-          keys:
-            - node-v1-{{ .Branch }}-{{ checksum "front-end/package-lock.json" }}
-            - node-v1-{{ .Branch }}-
-            - node-v1-
-      - save_cache:
-          paths:
-            - front-end/node_modules
-            - backend-end/node_modules
-          key: node-v1-{{ .Branch }}-{{ checksum "front-end/package-lock.json" }}
       - run:
           name: Lint front-end
           command: cd front-end && npm install eslint && ./node_modules/.bin/eslint --ext .js src/
