@@ -22,12 +22,21 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
+      - restore_cache:
+          keys:
+            - node-v1-{{ .Branch }}
+            - node-v1-
+      - save_cache:
+          paths:
+            - front-end/node_modules
+            - backend-end/node_modules
+          key: node-v1-{{ .Branch }}-
       - run:
           name: Lint front-end
-          command: cd front-end && npm install eslint && ./node_modules/.bin/eslint --ext .js src/
+          command: cd front-end && npm install && npm install eslint && ./node_modules/.bin/eslint --ext .js src/
       - run:
           name: Lint back-end
-          command: cd back-end && npm install eslint && ./node_modules/.bin/eslint --ext .js src/
+          command: cd back-end && npm install && npm install eslint && ./node_modules/.bin/eslint --ext .js src/
 
 workflows:
   # Below is the definition of your workflow.
