@@ -1,4 +1,3 @@
-
 import { get, post, update } from "./ApiService";
 
 export default {

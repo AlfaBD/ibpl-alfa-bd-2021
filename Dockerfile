@@ -1,14 +1,17 @@
-FROM node:13 as build
+FROM node:12-alpine as build
 
 # app
 WORKDIR /app
 COPY . /app/
 
 # nginx
-RUN apt-get update && apt-get install nginx -y && \
-    /etc/init.d/nginx stop && \
-    rm /etc/nginx/sites-enabled/default
-COPY .deploy/nginx/nginx.conf /etc/nginx/conf.d
+RUN apk update && apk add nginx openrc && \
+    mkdir -p /run/openrc && \
+    touch /run/openrc/softlevel && \
+    rc-update add nginx default && \
+    rc-status && \
+    rm /etc/nginx/conf.d/default.conf
+COPY .deploy/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 # frontend
 RUN cd front-end && npm install && \
@@ -22,7 +25,7 @@ RUN cd back-end && npm install && \
     npm install -g nodemon
 
 # Server
-EXPOSE 8000
+EXPOSE 80
 
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s /usr/local/bin/entrypoint.sh / # backwards compat

@@ -27,6 +27,7 @@ const sequelizeLoader = async ({ env }) => {
         modelConfigs.forEach(config => config.buildAssociations(models));
 
         // Sync models with database
+
         await sequelizeConnection.sync();  
 
         return sequelizeConnection;
