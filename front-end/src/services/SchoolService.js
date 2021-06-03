@@ -1,7 +1,5 @@
 import { get, post, update } from "./ApiService";
 
-
-
 export default {
   index() {
     return get("/school");

@@ -1,7 +1,7 @@
 const expressLoader = require('./express');
 const sequelizeLoader = require('./sequelize');
 
-const loaders = (settings = {}) => {
+const loaders = (async = (settings = {}) => {
   const load = async () => {
     try {
       console.log('[LOADERS] - Running loader files');
@@ -23,6 +23,6 @@ const loaders = (settings = {}) => {
   return {
     load,
   };
-};
+});
 
 module.exports = loaders;
