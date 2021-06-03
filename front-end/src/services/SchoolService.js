@@ -1,6 +1,5 @@
+
 import { get, post, update } from "./ApiService";
-
-
 
 export default {
   index() {
@@ -33,5 +32,3 @@ export default {
     return get("/evaluations");
   }
 }
-
-
