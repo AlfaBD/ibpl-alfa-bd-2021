@@ -33,6 +33,7 @@ const Dashboard = () => {
           <CRow>
             <CCol sm="5">
               <h4 id="traffic" className="card-title mb-0">Histórico</h4>
+
               <div className="small text-muted">Novembro 2021</div>
             </CCol>
             <CCol sm="7" className="d-none d-md-block">

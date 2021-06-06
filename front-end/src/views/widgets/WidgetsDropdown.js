@@ -3,14 +3,24 @@ import {
   CWidgetDropdown,
   CRow,
   CCol,
-  CDropdown,
-  CDropdownMenu,
-  CDropdownItem,
-  CDropdownToggle
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+
 import ChartLineSimple from '../charts/ChartLineSimple'
 import ChartBarSimple from '../charts/ChartBarSimple'
+
+const data = {
+  labels: ['dscdsc', 'dscdc'],
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: 2,
+    },
+    {
+      label: 'Dataset 2',
+      data: 4,
+    }
+  ]
+};
 
 const WidgetsDropdown = () => {
   // render
@@ -19,8 +29,8 @@ const WidgetsDropdown = () => {
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-primary"
-          header="9.823"
-          text="Members online"
+          header="Média 9.825"
+          text="Avaliação Mensal por Alunos"
           footerSlot={
             <ChartLineSimple
               pointed
@@ -28,22 +38,11 @@ const WidgetsDropdown = () => {
               style={{height: '70px'}}
               dataPoints={[65, 59, 84, 84, 51, 55, 40]}
               pointHoverBackgroundColor="primary"
-              label="Members"
+              label="avaliação de leitura"
               labels="months"
             />
           }
         >
-          <CDropdown>
-            <CDropdownToggle color="transparent">
-              <CIcon name="cil-settings"/>
-            </CDropdownToggle>
-            <CDropdownMenu className="pt-0" placement="bottom-end">
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here...</CDropdownItem>
-              <CDropdownItem disabled>Disabled action</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
         </CWidgetDropdown>
       </CCol>
 
@@ -51,7 +50,7 @@ const WidgetsDropdown = () => {
         <CWidgetDropdown
           color="gradient-info"
           header="9.823"
-          text="Members online"
+          text="Avaliação Mensal por Professores"
           footerSlot={
             <ChartLineSimple
               pointed
@@ -65,25 +64,14 @@ const WidgetsDropdown = () => {
             />
           }
         >
-          <CDropdown>
-            <CDropdownToggle caret={false} color="transparent">
-              <CIcon name="cil-location-pin"/>
-            </CDropdownToggle>
-            <CDropdownMenu className="pt-0" placement="bottom-end">
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here...</CDropdownItem>
-              <CDropdownItem disabled>Disabled action</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
         </CWidgetDropdown>
       </CCol>
 
       <CCol sm="6" lg="3">
         <CWidgetDropdown
           color="gradient-warning"
-          header="9.823"
-          text="Members online"
+          header="Total 9.823"
+          text="Total de Avaliações"
           footerSlot={
             <ChartLineSimple
               className="mt-3"
@@ -97,17 +85,6 @@ const WidgetsDropdown = () => {
             />
           }
         >
-          <CDropdown>
-            <CDropdownToggle color="transparent">
-              <CIcon name="cil-settings"/>
-            </CDropdownToggle>
-            <CDropdownMenu className="pt-0" placement="bottom-end">
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here...</CDropdownItem>
-              <CDropdownItem disabled>Disabled action</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
         </CWidgetDropdown>
       </CCol>
 
@@ -115,7 +92,7 @@ const WidgetsDropdown = () => {
         <CWidgetDropdown
           color="gradient-danger"
           header="9.823"
-          text="Members online"
+          text="Média de Avaliações"
           footerSlot={
             <ChartBarSimple
               className="mt-3 mx-3"
@@ -126,17 +103,6 @@ const WidgetsDropdown = () => {
             />
           }
         >
-          <CDropdown>
-            <CDropdownToggle caret className="text-white" color="transparent">
-              <CIcon name="cil-settings"/>
-            </CDropdownToggle>
-            <CDropdownMenu className="pt-0" placement="bottom-end">
-              <CDropdownItem>Action</CDropdownItem>
-              <CDropdownItem>Another action</CDropdownItem>
-              <CDropdownItem>Something else here...</CDropdownItem>
-              <CDropdownItem disabled>Disabled action</CDropdownItem>
-            </CDropdownMenu>
-          </CDropdown>
         </CWidgetDropdown>
       </CCol>
     </CRow>
