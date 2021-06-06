@@ -21,3 +21,4 @@ module.exports = (app) => {
     //Delete a specific student
     route.delete( '/:schoolId', (req, res, next) => {});
 };
+
