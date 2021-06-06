@@ -2,6 +2,7 @@ const Router = require('express');
 const student = require('./routes/student');
 const school = require('./routes/school');
 const teacher = require('./routes/teacher');
+const analysis = require('./routes/analysis');
 
 // guaranteed to get dependencies
 module.exports = () => {
@@ -10,6 +11,7 @@ module.exports = () => {
   student(app)
   school(app)
   teacher(app)
+  analysis(app)
 
   return app;
 };

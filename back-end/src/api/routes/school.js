@@ -3,10 +3,21 @@ const route = router();
 
 module.exports = (app) => {
 
-    //All routes under this file will be prefixed with /analysis
-    app.use('/analysis', route);
+    //All routes under this file will be prefixed with /student
+    app.use('/school', route);
 
-    //Process predicition student speech
-    route.post( '/predict/:studentId/:speech', (req, res, next) => {});
+    //Get all student information
+    route.get( '/', (req, res, next) => {});
+
+    //Get a specific student information
+    route.get( '/:schoolId', (req, res, next) => {});
+
+    //Create a new student
+    route.post( '/', (req, res, next) => {});
+
+    //Update a student information
+    route.put( '/:schoolId', (req, res, next) => {});
+
+    //Delete a specific student
+    route.delete( '/:schoolId', (req, res, next) => {});
 };
-
