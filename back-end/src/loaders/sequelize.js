@@ -4,6 +4,8 @@ const path = require( 'path' );
 const { Sequelize } = require('sequelize');
 const getModelsConfig = require('../models');
 
+let db;
+
 const sequelizeLoader = async ({ env }) => {
     try {
         console.log('[SEQUELIZE LOADER] - Loading sequelize connection with DataBase');
@@ -29,6 +31,7 @@ const sequelizeLoader = async ({ env }) => {
         // Sync models with database
 
         await sequelizeConnection.sync();  
+        db = sequelizeConnection;
 
         return sequelizeConnection;
 
@@ -38,4 +41,5 @@ const sequelizeLoader = async ({ env }) => {
     }
 }
 
-module.exports = sequelizeLoader;
+module.exports.sequelizeLoader = sequelizeLoader;
+module.exports.getDb = () => { return db }
