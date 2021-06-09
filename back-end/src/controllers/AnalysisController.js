@@ -1,29 +1,22 @@
 const formidable = require('formidable')
 const form = new formidable.IncomingForm()
-const { PythonShell } = require('python-shell')
+const {PythonShell} = require('python-shell')
+
+PythonShell.defaultOptions = { mode: 'text', pythonOptions: ['-u'], scriptPath: './src/controllers/scripts' };
+
+const pyshell = new PythonShell('classifier.py')
 
 module.exports = {
-    async predict(request, response, fields, files) {
-        const result = await function () {     
-            
-            let options = {file: files.path, path: fields.path, studentId: request.params.studentId};
+    predict(request, response, fields, files) {
+        pyshell.send(files.file.path);
 
-            PythonShell.run('classifier.py', options, function (err, result) {
-                if (err) throw err;
-                return result;
-            });          
-        };
-        return response.json(result);
-    },
+        pyshell.on('message', function (result) {
+            //Todo: persistir os dados no banco
+            return response.json({'status': 'OK', 'result': result});
+        });
 
-    async predict2(request, response) {
-        const result = await form.parse(request, (err, fields, files) => {
-
-            console.log(request);
-            let options = {file: files.path, path: fields.path, studentId: request.params.studentId};
-
-            return {};
-        });        
-        return response.json(result);
+        pyshell.end(function (err, code, signal) {
+            if (err) return response.json({'status': 'ERROR', 'message': err, 'result': null});
+        });
     },
 };

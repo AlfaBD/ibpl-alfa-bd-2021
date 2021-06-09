@@ -10,8 +10,6 @@ module.exports = (app) => {
     app.use('/analysis', route);
 
     //Process predicition student speech
-    route.post( '/', AnalysisController.predict2);
-
     route.post('/:studentId', (req, res, next) => form.parse(req, (err, fields, files) => AnalysisController.predict(req, res, fields, files)));
 };
 
