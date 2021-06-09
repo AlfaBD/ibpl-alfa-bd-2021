@@ -1,4 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
+const bcrypt = require('bcrypt');
+const config = require('../config')
 
 module.exports = {
     tableName: 'User',
@@ -9,7 +11,8 @@ module.exports = {
             defaultValue: Sequelize.UUIDV4
         },
         usr_cpf: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            unique: true
         },
         usr_name: {
             type: DataTypes.STRING
@@ -20,9 +23,6 @@ module.exports = {
         usr_password_hash: {
             type: DataTypes.STRING
         },
-        usr_salt: {
-            type: DataTypes.STRING
-        },
         usr_birth_date: {
             type: DataTypes.STRING
         },
@@ -31,6 +31,25 @@ module.exports = {
         },
         usr_login_count: {
             type: DataTypes.STRING
+        }
+    },
+    tableOptions: {
+        hooks: {
+            beforeCreate: async (user) => {
+                if (user.usr_password_hash && user.usr_password_hash != '') {
+                    user.usr_password_hash = await bcrypt.hash(user.usr_password_hash, config.passwordEncryptSalts);
+                }
+            },
+            beforeUpdate: async (user) => {
+                if (user.usr_password_hash && user.usr_password_hash != '') {
+                    user.usr_password_hash = await bcrypt.hash(user.usr_password_hash, config.passwordEncryptSalts);
+                }
+            }
+        },
+        instanceMethods: {
+            isPasswordValid: function(password) {
+                return bcrypt.compareSync(password, this.usr_password_hash);
+            }
         }
     },
     buildAssociations: (models) => {

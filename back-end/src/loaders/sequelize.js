@@ -4,6 +4,8 @@ const path = require( 'path' );
 const { Sequelize } = require('sequelize');
 const getModelsConfig = require('../models');
 
+let db;
+
 const sequelizeLoader = async ({ env }) => {
     try {
         console.log('[SEQUELIZE LOADER] - Loading sequelize connection with DataBase');
@@ -19,16 +21,31 @@ const sequelizeLoader = async ({ env }) => {
         let models = {};
 
         modelConfigs.forEach(
-            ({tableName, tableAttributes}) => 
-                models[tableName] = sequelizeConnection.define(tableName, tableAttributes));
+            ({tableName, tableAttributes, tableOptions = {} }) => 
+                {
+                    models[tableName] = sequelizeConnection.define(tableName, tableAttributes, tableOptions);
+                    //Initialize instance methods
+                    if (tableOptions.instanceMethods) {
+                        console.log('TEM AQUI!')
+                        Object.keys(tableOptions.instanceMethods).forEach(method => {
+                            models[tableName].prototype[method] = tableOptions.instanceMethods[method]
+                        })
+                    }
+                });
         
-    
         // Build associaitions
         modelConfigs.forEach(config => config.buildAssociations(models));
 
         // Sync models with database
-
         await sequelizeConnection.sync();  
+        db = sequelizeConnection;
+
+        // Init the Roles model with pre-defined roles
+        const roles = config.preDefinedRoles;
+        for (role of roles) {
+            await db.models.Role.upsert({rol_name: role})
+        }
+
 
         return sequelizeConnection;
 
@@ -38,4 +55,5 @@ const sequelizeLoader = async ({ env }) => {
     }
 }
 
-module.exports = sequelizeLoader;
+module.exports.sequelizeLoader = sequelizeLoader;
+module.exports.getDb = () => { return db }
