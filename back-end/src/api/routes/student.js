@@ -1,5 +1,6 @@
 const router = require('express');
 const studentService = require('../../services/student');
+const userService = require('../../services/user');
 const route = router();
 
 module.exports = (app) => {
@@ -20,7 +21,12 @@ module.exports = (app) => {
     });
 
     //Create a new student
-    route.post( '/', (req, res, next) => {});
+    route.post( '/', async (req, res, next) => {
+        const role = "STUDENT";
+        const userData = req.body.userData;
+        const createdUser = await userService.createUser({role, userData});
+        res.status(200).json(createdUser);
+    });
 
     //Update a student information
     route.put( '/:studentId', (req, res, next) => {});
