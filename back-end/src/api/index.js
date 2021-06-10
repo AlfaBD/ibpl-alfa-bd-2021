@@ -7,7 +7,6 @@ const teacher = require('./routes/teacher');
 // guaranteed to get dependencies
 module.exports = () => {
   const app = Router();
-
   authenticate(app);
   student(app);
   school(app);

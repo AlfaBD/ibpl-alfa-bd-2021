@@ -8,9 +8,13 @@ const Aluno = React.lazy(() => import("./views/cadastro/aluno/Aluno"));
 const Professor = React.lazy(() => import("./views/cadastro/professor/Professor"));
 const Escola = React.lazy(() => import("./views/cadastro/escola/Escola"));
 
+
+/* const Dashboard = React.lazy(() => import("./views/dashboard/Dashboard")); */
 const DashboardEscola = React.lazy(() => import("./views/dashboard/escola/Dashboard"));
 const DashboardProfessor = React.lazy(() => import("./views/dashboard/professor/Dashboard"));
 const DashboardAluno = React.lazy(() => import("./views/dashboard/aluno/Dashboard"));
+const DashboardAdmin = React.lazy(() => import("./views/dashboard/admin/Dashboard"));
+
 const LigaAluno = React.lazy(() => import("./views/aluno/liga"));
 const Login = React.lazy(() => import("./views/pages/login/Login"));
 
@@ -22,6 +26,8 @@ const routes = [
   { path: "/dashboard/escola", name: "Dashboard Escola", component: DashboardEscola },
   { path: "/dashboard/professor", name: "Dashboard", component: DashboardProfessor },
   { path: "/dashboard/aluno", name: "Painel do aluno", component: DashboardAluno, exact: true },
+  { path: "/dashboard/admin", name: "Painel do Administrador", component: DashboardAdmin, exact: true },
+
   
   { path: "/aluno/liga", name: "Liga dos leitores", component: LigaAluno, exact: true },
 

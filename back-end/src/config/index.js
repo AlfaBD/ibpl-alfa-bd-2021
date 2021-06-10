@@ -4,7 +4,6 @@ const DATABASE_DIALECT = 'mysql';
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
-
 module.exports = {
   port: process.env.PORT || 3000,
   databaseConfig: {
@@ -24,5 +23,7 @@ module.exports = {
         database: process.env.DATABASE_NAME_PROD,
         dialect: DATABASE_DIALECT
       }
-  }
+  },
+  passwordEncryptSalts: 10,
+  preDefinedRoles: ['ADMIN', 'STUDENT', 'TEACHER', 'SCHOOL']
 };
