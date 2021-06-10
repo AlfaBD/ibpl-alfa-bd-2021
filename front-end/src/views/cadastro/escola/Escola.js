@@ -21,6 +21,7 @@ import {
 import CIcon from "@coreui/icons-react";
 
 import usersData from "./EscolasData";
+import { store } from '../../../services/SchoolService';
 
 const getBadge = (status) => {
   switch (status) {
@@ -43,6 +44,16 @@ const Escola = () => {
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1);
   const [page, setPage] = useState(currentPage);
 
+  // States for form data
+  const [name, setName] = useState('');
+  const [cnpj, setCnpj] = useState('');
+  const [mecCode, setMecCode] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+
   const pageChange = (newPage) => {
     currentPage !== newPage && history.push(`/cadastro/escola?page=${newPage}`);
   };
@@ -51,13 +62,38 @@ const Escola = () => {
     currentPage !== page && setPage(currentPage);
   }, [currentPage, page]);
 
+  const handleSubmit = async (event) => {
+    // We will call the proper service to store the Teacher on DB
+    const schoolData = {
+      sch_name: name,
+      sch_cnpj: cnpj,
+      sch_state: state,
+      sch_city: city,
+      sch_status: 'ACTIVE', //We can consider this default for new schols
+      sch_address: address,
+      sch_phoneNumber: phoneNumber,
+      sch_mecNumber: mecCode,
+      sch_email: email
+    }
+    console.log(schoolData)
+    try {
+      const createdSchool = await store({ schoolData })
+    } catch (err) {
+      console.log(err);
+      //TODO: Address server errors here
+    }
+
+    // On success, we should display a confirmation modal
+    event.preventDefault();
+  }
+
   return (
     <div>
       <CRow className="justify-content-center">
         <CCol md="12" lg="12" xl="12">
           <CCard>
             <CCardBody className="p-4">
-              <CForm>
+              <CForm onSubmit={handleSubmit}>
                 <h1>Escola</h1>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
@@ -70,6 +106,8 @@ const Escola = () => {
                     placeholder="Nome"
                     autoComplete="Nome"
                     data-cy="nome"
+                    value={name} 
+                    onChange={e => setName(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -83,6 +121,8 @@ const Escola = () => {
                     placeholder="CNPJ"
                     autoComplete="CNPJ"
                     data-cy="cnpj"
+                    value={cnpj} 
+                    onChange={e => setCnpj(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -96,6 +136,23 @@ const Escola = () => {
                     placeholder="Código do INEP/MEC"
                     autoComplete=""
                     data-cy="inep"
+                    value={mecCode} 
+                    onChange={e => setMecCode(e.target.value)}
+                  />
+                </CInputGroup>
+                <CInputGroup className="mb-3">
+                  <CInputGroupPrepend>
+                    <CInputGroupText>
+                      <CIcon name="cil-paperclip" />
+                    </CInputGroupText>
+                  </CInputGroupPrepend>
+                  <CInput
+                    type="text"
+                    placeholder="Logradouro"
+                    autoComplete="Logradouro"
+                    data-cy="logradouro"
+                    value={address} 
+                    onChange={e => setAddress(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -109,6 +166,8 @@ const Escola = () => {
                     placeholder="Município"
                     autoComplete="Municipio"
                     data-cy="municipio"
+                    value={city} 
+                    onChange={e => setCity(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -122,9 +181,10 @@ const Escola = () => {
                     placeholder="Estado"
                     autoComplete="Estado"
                     data-cy="estado"
+                    value={state} 
+                    onChange={e => setState(e.target.value)}
                   />
                 </CInputGroup>
-                <p className="text-muted">Acesso</p>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
                     <CInputGroupText>
@@ -136,6 +196,8 @@ const Escola = () => {
                     placeholder="E-mail"
                     autoComplete="email"
                     data-cy="email"
+                    value={email} 
+                    onChange={e => setEmail(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -149,45 +211,19 @@ const Escola = () => {
                     placeholder="Número Celular"
                     autoComplete="Numero Celular"
                     data-cy="celular"
+                    value={phoneNumber} 
+                    onChange={e => setPhoneNumber(e.target.value)}
                   />
                 </CInputGroup>
-                <CInputGroup className="mb-3">
-                  <CInputGroupPrepend>
-                    <CInputGroupText>
-                      <CIcon name="cil-lock-locked" />
-                    </CInputGroupText>
-                  </CInputGroupPrepend>
-                  <CInput
-                    type="password"
-                    placeholder="Senha"
-                    autoComplete="new-password"
-                    data-cy="senha"
-                  />
-                </CInputGroup>
-                <CInputGroup className="mb-4">
-                  <CInputGroupPrepend>
-                    <CInputGroupText>
-                      <CIcon name="cil-lock-locked" />
-                    </CInputGroupText>
-                  </CInputGroupPrepend>
-                  <CInput
-                    type="password"
-                    placeholder="Repita a senha"
-                    autoComplete="new-password"
-                    data-cy="repita-senha"
-                  />
-                </CInputGroup>
+                <CRow>
+                  <CCol xs="12" sm="12">
+                    <CButton type="submit" color="success" data-cy="submit" block>
+                      Cadastrar
+                    </CButton>
+                  </CCol>
+                </CRow>
               </CForm>
             </CCardBody>
-            <CCardFooter className="p-4">
-              <CRow>
-                <CCol xs="12" sm="12">
-                  <CButton color="success" data-cy="submit" block>
-                    Cadastrar
-                  </CButton>
-                </CCol>
-              </CRow>
-            </CCardFooter>
           </CCard>
         </CCol>
       </CRow>

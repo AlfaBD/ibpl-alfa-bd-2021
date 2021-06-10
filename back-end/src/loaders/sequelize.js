@@ -1,6 +1,4 @@
 const config = require('../config');
-const fs = require( 'fs' );
-const path = require( 'path' );
 const { Sequelize } = require('sequelize');
 const getModelsConfig = require('../models');
 
@@ -26,7 +24,6 @@ const sequelizeLoader = async ({ env }) => {
                     models[tableName] = sequelizeConnection.define(tableName, tableAttributes, tableOptions);
                     //Initialize instance methods
                     if (tableOptions.instanceMethods) {
-                        console.log('TEM AQUI!')
                         Object.keys(tableOptions.instanceMethods).forEach(method => {
                             models[tableName].prototype[method] = tableOptions.instanceMethods[method]
                         })

@@ -10,8 +10,6 @@ import {
   CRow,
   CPagination,
   CButton,
-  CCardFooter,
-  CContainer,
   CForm,
   CInput,
   CInputGroup,
@@ -21,6 +19,7 @@ import {
 
 import CIcon from '@coreui/icons-react'
 import usersData from './ProfessoresData'
+import { store } from '../../../services/TeacherService';
 
 const getBadge = status => {
   switch (status) {
@@ -38,6 +37,13 @@ const Professor = () => {
   const currentPage = Number(queryPage && queryPage[1] ? queryPage[1] : 1)
   const [page, setPage] = useState(currentPage)
 
+  // States for form data
+  const [name, setName] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+  const [password, setPassword] = useState('');
+
   const pageChange = newPage => {
     currentPage !== newPage && history.push(`/users?page=${newPage}`)
   }
@@ -45,6 +51,27 @@ const Professor = () => {
   useEffect(() => {
     currentPage !== page && setPage(currentPage)
   }, [currentPage, page])
+
+  const handleSubmit = async (event) => {
+    // We will call the proper service to store the Teacher on DB
+    const userData = {
+      usr_cpf: cpf,
+      usr_name: name,
+      usr_email: email,
+      usr_password_hash: password,
+      usr_birth_date: birthDate
+    }
+    
+    try {
+      const createdTeacher = await store({ userData })
+    } catch (err) {
+      console.log(err);
+      //TODO: Address server errors here
+    }
+
+    // On success, we should display a confirmation modal
+    event.preventDefault();
+  }
 
   return (
     <CRow>
@@ -55,14 +82,19 @@ const Professor = () => {
             <small className="text-muted"></small>
           </CCardHeader>
             <CCardBody className="p-4">
-              <CForm>
+              <CForm onSubmit={handleSubmit}>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
                     <CInputGroupText>
                       <CIcon name="cil-user" />
                     </CInputGroupText>
                   </CInputGroupPrepend>
-                  <CInput type="text" placeholder="Nome" autoComplete="username" />
+                  <CInput 
+                    type="text" 
+                    placeholder="Nome" 
+                    autoComplete="username"  
+                    value={name} 
+                    onChange={e => setName(e.target.value)}/>
                 </CInputGroup>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
@@ -70,13 +102,23 @@ const Professor = () => {
                       <CIcon name="cil-file" />
                     </CInputGroupText>
                   </CInputGroupPrepend>
-                  <CInput type="text" placeholder="CPF" autoComplete="cpf" />
+                  <CInput 
+                    type="text" 
+                    placeholder="CPF" 
+                    autoComplete="cpf"
+                    value={cpf} 
+                    onChange={e => setCpf(e.target.value)} />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
                     <CInputGroupText>@</CInputGroupText>
                   </CInputGroupPrepend>
-                  <CInput type="text" placeholder="Email" autoComplete="email" />
+                  <CInput 
+                    type="text" 
+                    placeholder="Email" 
+                    autoComplete="email"
+                    value={email} 
+                    onChange={e => setEmail(e.target.value)} />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
@@ -84,7 +126,12 @@ const Professor = () => {
                       <CIcon name="cil-calendar" />
                     </CInputGroupText>
                   </CInputGroupPrepend>
-                  <CInput type="password" placeholder="Data de Nascimento" autoComplete="data de nascimento" />
+                  <CInput 
+                    type="date" 
+                    placeholder="Data de Nascimento" 
+                    autoComplete="data de nascimento"
+                    value={birthDate} 
+                    onChange={e => setBirthDate(e.target.value)} />
                 </CInputGroup>
                 <CInputGroup className="mb-4">
                   <CInputGroupPrepend>
@@ -92,9 +139,14 @@ const Professor = () => {
                       <CIcon name="cil-lock-locked" />
                     </CInputGroupText>
                   </CInputGroupPrepend>
-                  <CInput type="password" placeholder="Senha" autoComplete="senha" />
+                  <CInput 
+                    type="password" 
+                    placeholder="Senha" 
+                    autoComplete="senha" 
+                    value={password} 
+                    onChange={e => setPassword(e.target.value)}/>
                 </CInputGroup>
-                <CButton color="success" block>Criar Conta</CButton>
+                <CButton type="submit" color="success" block>Criar Conta</CButton>
               </CForm>
             </CCardBody>
         </CCard>

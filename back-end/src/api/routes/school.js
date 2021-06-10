@@ -1,4 +1,5 @@
 const router = require('express');
+const schoolService = require('../../services/school');
 const route = router();
 
 module.exports = (app) => {
@@ -22,7 +23,11 @@ module.exports = (app) => {
     route.get( '/:schoolId', (req, res, next) => {});
 
     //Create a new school
-    route.post( '/', (req, res, next) => {});
+    route.post( '/', async (req, res, next) => {
+        const schoolData = req.body.schoolData;
+        const createdSchool = await schoolService.createSchool({schoolData});
+        res.status(200).json(createdSchool);
+    });
 
     //Update a school information
     route.put( '/:schoolId', (req, res, next) => {});
