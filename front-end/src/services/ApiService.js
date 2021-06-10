@@ -1,20 +1,19 @@
 import axios from "axios";
 
+const DEV_HOST = 'http://localhost:8000'
+const PROD_HOST = ''
+
 const api = axios.create({
-  baseURL: "http://localhost:3001",
+  baseURL: `${DEV_HOST}/api/alfabd`,
 });
 
 export async function get (url, params) {
   return (await api.get(url, {params})).data
 }
 
-export async function post (url, params) {
-  const fd = new FormData()
-  params = params || {}
-  Object.keys(params).map((k) => {
-    fd.append(k, params[k])
-  })
-  return (await api.post(url, fd)).data
+export async function post (url, body) {
+  body = body || {}
+  return (await api.post(url, body)).data
 }
 
 export async function update (url, params) {
