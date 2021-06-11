@@ -1,10 +1,15 @@
 const _nav = [
   {
     _tag: "CSidebarNavItem",
+    name: "Login",
+    to: "/login",
+    icon: "cil-pencil",
+  },
+  {
+    _tag: "CSidebarNavItem",
     name: "Escolas",
     to: "/cadastro/escola",
     icon: "cil-pencil",
-    dataCy: "escola",
   },
   {
     _tag: "CSidebarNavItem",
@@ -23,30 +28,25 @@ const _nav = [
     name: "Dashboard Escola",
     to: "/dashboard/escola",
     icon: "cil-pencil",
-    ataCy: "escola",
   },
   {
     _tag: "CSidebarNavItem",
     name: "Dashboard Professor",
     to: "/dashboard/professor",
     icon: "cil-pencil",
-    ataCy: "escola",
   },
   {
     _tag: "CSidebarNavItem",
     name: "Dashboard Aluno",
     to: "/dashboard/aluno",
     icon: "cil-pencil",
-    ataCy: "escola",
   },
   {
     _tag: "CSidebarNavItem",
     name: "Dashboard Admin",
     to: "/dashboard/admin",
     icon: "cil-pencil",
-    ataCy: "administrador",
-  }
-  
+  },
 ];
 
 export default _nav;

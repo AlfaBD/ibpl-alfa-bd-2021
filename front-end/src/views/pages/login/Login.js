@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import {
+  CAlert,
   CButton,
   CCard,
   CCardBody,
@@ -17,51 +18,46 @@ import {
 import CIcon from "@coreui/icons-react";
 
 import background from "../../../img/background.png";
+import { authenticate } from "../../../services/StudentService";
 
 const sectionStyle = {
   backgroundImage: "url(" + background + ")",
 };
 
-function initialState() {
-  return { username: "", password: "" };
-}
-
 const Login = () => {
   const history = useHistory();
 
-  const routeChange = () => {
-    let path = "/";
+  const routeChange = (data) => {
+    let path = "/" + data;
     history.push(path);
   };
 
-  const [values, setValues] = useState(initialState);
+  // States for form data
+  const [usr_email, setName] = useState("");
+  const [usr_password_hash, setPassword] = useState("");
 
-  function onChange(event) {
-    const { value, name } = event.target;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // We will call the proper service to verify login on DB
+    const username = usr_email;
+    const password = usr_password_hash;
 
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  }
+    try {
+      const auth = await authenticate({
+        username: username,
+        password: password,
+      });
+      console.log(auth);
+      localStorage.setItem("token", auth.token);
+      localStorage.setItem("user", auth.user);
+      routeChange("dashboard/aluno");
+    } catch (err) {
+      console.log(err);
+      //TODO: Address server errors here
+    }
 
-  function onSubmit(event) {
-    event.preventDefault()
-
-    const auth = 'http://localhost:8000/api/alfabd/authenticate';
-    
-    fetch(auth, {
-      method: "POST",
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(values)
-    })
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result)
-    })
-  }
+    // On success, we should display a confirmation modal
+  };
 
   return (
     // eslint-disable-next-line no-template-curly-in-string
@@ -75,8 +71,8 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm onSubmit={onSubmit} >
-                    <h2 class="text-primary">
+                  <CForm onSubmit={handleSubmit}>
+                    <h2 className="text-primary">
                       <b>Bem Vindo ao Programa Mais Alfabetização</b>
                     </h2>
                     <br></br>
@@ -84,6 +80,12 @@ const Login = () => {
                       <b>Para acessar digite suas credenciais</b>
                     </h4>
                     <br></br>
+                    <div
+                      className="alert alert-danger show d-none"
+                      role="alert"
+                    >
+                      Senha incorreta
+                    </div>
                     <CInputGroup className="mb-3">
                       <CInputGroupPrepend>
                         <CInputGroupText>
@@ -95,8 +97,8 @@ const Login = () => {
                         name="username"
                         placeholder="e-mail"
                         autoComplete="username"
-                        onChange={onChange}
-                        value={values.username}
+                        value={usr_email}
+                        onChange={(e) => setName(e.target.value)}
                       />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
@@ -110,8 +112,8 @@ const Login = () => {
                         name="password"
                         placeholder="senha"
                         autoComplete="current-password"
-                        onChange={onChange}
-                        value={values.password}
+                        value={usr_password_hash}
+                        onChange={(e) => setPassword(e.target.value)}
                       />
                     </CInputGroup>
                     <CRow>
