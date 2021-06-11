@@ -8,8 +8,12 @@ module.exports = {
             type: DataTypes.UUID,
             defaultValue: Sequelize.UUIDV4
         },
-        sch_cnpj: {
+        sch_name: {
             type: DataTypes.STRING
+        },
+        sch_cnpj: {
+            type: DataTypes.STRING,
+            unique: true
         },
         sch_mecNumber: {
             type: DataTypes.STRING
@@ -24,6 +28,12 @@ module.exports = {
             type: DataTypes.STRING
         },
         sch_address: {
+            type: DataTypes.STRING
+        },
+        sch_phoneNumber: {
+            type: DataTypes.STRING
+        },
+        sch_email: {
             type: DataTypes.STRING
         }
     },

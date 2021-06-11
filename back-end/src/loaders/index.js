@@ -1,5 +1,5 @@
 const expressLoader = require('./express');
-const sequelizeLoader = require('./sequelize');
+const { sequelizeLoader } = require('./sequelize');
 
 const loaders = (async = (settings = {}) => {
   const load = async () => {
@@ -10,7 +10,6 @@ const loaders = (async = (settings = {}) => {
       const app = await expressLoader();
       const db = await sequelizeLoader({ env: process.env.NODE_ENV });
 
-      //Extra loaders can come here! e.g: database loader
       console.log('[LOADERS] - Loader files runned');
       
       return { app, db };
