@@ -4,7 +4,7 @@ const FluencyMetrics = new mongoose.Schema(
   {
     idProfessor: Number,
     idAluno: Number,
-    nota: String,
+    metrica: String,
   },
   {
     timestamps: true,

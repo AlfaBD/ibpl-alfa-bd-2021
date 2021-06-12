@@ -1,5 +1,5 @@
 const router = require('express');
-const schoolController = require('../../controllers/schoolController');
+const schoolController = require('../../controllers/SchoolController');
 const route = router();
 
 module.exports = (app) => {
@@ -23,11 +23,6 @@ module.exports = (app) => {
 
   //Create a new school
   route.post('/', schoolController.store);
-  //   route.post('/', async (req, res, next) => {
-  //     const schoolData = req.body.schoolData;
-  //     const createdSchool = await schoolService.createSchool({ schoolData });
-  //     res.status(200).json(createdSchool);
-  //   });
 
   //Update a school information
   route.put('/:schoolId', schoolController.update);

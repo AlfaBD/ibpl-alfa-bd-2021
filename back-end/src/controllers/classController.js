@@ -1,26 +1,26 @@
-const Class = require('../models/class');
+const classService = require('../services/class');
 
 module.exports = {
   async index(request, response) {
-    const clazz = await Class.findAll();
-    return response.json(clazz);
+    const schools = await classService.getAllClasses();
+    return response.json(schools);
   },
   async show(request, response) {
-    const clazz = await Class.findAll({
-      where: { cla_id: request.params.classId },
-    });
-    return response.json(clazz);
+    const school = await classService.getClassById(request.params);
+    return response.json(school);
   },
   async store(request, response) {
-    const clazz = await Class.create(request.body);
-    return response.json(clazz);
+    const school = await classService.createClass(request.body);
+    return response.json(school);
   },
   async update(request, response) {
-    const cla_id = request.params.classId;
-    await Class.update(request.body, { where: { cla_id } });
-    return response.json(request.body);
+    const sch_id = request.params.schoolId;
+    const school = await classService.updateClass(sch_id, request.body);
+    return response.json(school);
   },
   async delete(request, response) {
-    await Class.destroy({ where: { cla_id: request.params.classId } });
+    const sch_id = request.params.schoolId;
+    const result = await classService.deleteClass(sch_id);
+    return response.json(Boolean(result));
   },
 };
