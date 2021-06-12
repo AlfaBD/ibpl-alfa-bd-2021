@@ -1,6 +1,6 @@
 const router = require('express');
 const route = router();
-const authenticationController = require('../../controllers/authenticationController');
+const authenticationController = require('../../controllers/AuthenticationController');
 
 module.exports = (app) => {
   app.use('/authenticate', route);
