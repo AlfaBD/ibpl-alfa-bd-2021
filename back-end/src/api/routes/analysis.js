@@ -2,7 +2,7 @@ const router = require('express');
 const formidable = require('formidable');
 const form = new formidable.IncomingForm();
 const route = router();
-const AnalysisController = require('../../controllers/AnalysisController');
+const AnalysisController = require('../../controllers/analysisController');
 
 module.exports = (app) => {
 
