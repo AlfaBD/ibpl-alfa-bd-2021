@@ -1,26 +1,29 @@
-const teacherService = require('../services/user');
+const userService = require('../services/user');
 
 module.exports = {
   async index(request, response) {
-    const teachers = await teacherService.geUserByRole('TEACHER');
-    return response.json(teachers);
+    const schools = await userService.getUsersByRole('TEACHER');
+    return response.json(schools);
   },
   async show(request, response) {
-    const teacher = await teacherService.getUserById();
-    return response.json(teacher);
+    const userId = request.params.adminId;
+    const school = await userService.getUserById(userId, 'TEACHER');
+    return response.json(school);
   },
   async store(request, response) {
-    const teacher = await teacherService.createUser(request.body);
-    return response.json(teacher);
+    request.body.role = 'TEACHER';
+    const school = await userService.createUser(request.body);
+    return response.json(school);
   },
   async update(request, response) {
-    const usr_id = request.params.userId;
-    const teacher = await teacherService.updateUser(usr_id, request.body);
-    return response.json(teacher);
+    const userId = request.params.adminId;
+    request.body.role = 'TEACHER';
+    const school = await userService.updateUser(userId, request.body);
+    return response.json(school);
   },
   async delete(request, response) {
-    const usr_id = request.params.userId;
-    const result = await teacherService.deleteUser(usr_id);
+    const userId = request.params.adminId;
+    const result = await userService.deleteUser(userId, 'TEACHER');
     return response.json(Boolean(result));
   },
 };
