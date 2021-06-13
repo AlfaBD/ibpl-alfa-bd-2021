@@ -5,8 +5,8 @@ module.exports = {
     tableAttributes: {
         que_id: {
             primaryKey: true,
-            type: DataTypes.UUID,
-            defaultValue: Sequelize.UUIDV4
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
         },
         que_question: {
             type: DataTypes.STRING

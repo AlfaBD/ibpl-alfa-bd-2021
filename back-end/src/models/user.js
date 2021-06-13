@@ -7,8 +7,8 @@ module.exports = {
   tableAttributes: {
     usr_id: {
       primaryKey: true,
-      type: DataTypes.UUID,
-      defaultValue: Sequelize.UUIDV4,
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
     },
     usr_cpf: {
       type: DataTypes.STRING,

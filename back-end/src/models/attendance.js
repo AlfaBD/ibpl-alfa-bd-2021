@@ -5,8 +5,8 @@ module.exports = {
   tableAttributes: {
     att_id: {
       primaryKey: true,
-      type: DataTypes.UUID,
-      defaultValue: Sequelize.UUIDV4,
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
     },
   },
   buildAssociations: (models) => {
