@@ -10,12 +10,13 @@ module.exports = {
       throw err;
     }
   },
-  getUserById: async ({ userId }) => {
+  getUserById: async (userId, role) => {
     const db = getDb();
     try {
       const user = db.models.User.findAll({
         where: {
           usr_id: userId,
+          usr_primary_role: role,
         },
       });
       return user;
@@ -26,12 +27,12 @@ module.exports = {
   getUsersByRole: async (role) => {
     const db = getDb();
     try {
-      const school = db.models.School.findAll({
+      const user = db.models.User.findAll({
         where: {
-          role,
+          usr_primary_role: role,
         },
       });
-      return school;
+      return user;
     } catch (err) {
       throw err;
     }
@@ -48,6 +49,7 @@ module.exports = {
     }
   },
   createUser: async (userData) => {
+    console.log(role);
     const db = getDb();
     try {
       const createdUser = await db.models.User.create({
@@ -56,7 +58,7 @@ module.exports = {
         usr_email: userData.usr_email,
         usr_password_hash: userData.usr_password_hash,
         usr_birth_date: userData.usr_birth_date,
-        usr_primary_role: userData.role,
+        usr_primary_role: role,
       });
       return createdUser;
     } catch (err) {
@@ -86,12 +88,13 @@ module.exports = {
       throw err;
     }
   },
-  deleteUser: async (userId) => {
+  deleteUser: async (userId, role) => {
     const db = getDb();
     try {
       const response = await db.models.User.destroy({
         where: {
           usr_id: userId,
+          usr_primary_role: role,
         },
       });
       return response;

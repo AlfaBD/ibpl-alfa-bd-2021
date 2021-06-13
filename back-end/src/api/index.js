@@ -1,5 +1,6 @@
 const Router = require('express');
 const authenticate = require('./routes/authenticate');
+const admin = require('./routes/admin');
 const student = require('./routes/student');
 const school = require('./routes/school');
 const teacher = require('./routes/teacher');
@@ -11,6 +12,7 @@ module.exports = () => {
   const app = Router();
 
   authenticate(app);
+  admin(app);
   student(app);
   school(app);
   teacher(app);
