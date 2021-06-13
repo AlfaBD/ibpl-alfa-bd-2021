@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('../api');
+const mongoose = require('mongoose');
 
 const expressLoader = async (settings = {}) => {
   try {
@@ -19,6 +20,11 @@ const expressLoader = async (settings = {}) => {
     //Middleware that parses req.body in JSON
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
+
+    mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
     //Load all routes from the server
     //Prefixes all the calls in the API with /api/alfabd

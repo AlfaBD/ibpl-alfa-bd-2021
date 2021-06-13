@@ -5,8 +5,8 @@ module.exports = {
     tableAttributes: {
         sch_id: {
             primaryKey: true,
-            type: DataTypes.UUID,
-            defaultValue: Sequelize.UUIDV4
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
         },
         sch_name: {
             type: DataTypes.STRING

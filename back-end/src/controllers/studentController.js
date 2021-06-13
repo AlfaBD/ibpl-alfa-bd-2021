@@ -2,25 +2,28 @@ const userService = require('../services/user');
 
 module.exports = {
   async index(request, response) {
-    const students = await userService.getUsersByRole('STUDENT');
-    return response.json(students);
+    const schools = await userService.getUsersByRole('STUDENT');
+    return response.json(schools);
   },
   async show(request, response) {
-    const student = await userService.getUserById(request.params);
-    return response.json(student);
+    const userId = request.params.adminId;
+    const school = await userService.getUserById(userId, 'STUDENT');
+    return response.json(school);
   },
   async store(request, response) {
-    const student = await userService.createUser(request.body);
-    return response.json(student);
+    request.body.role = 'STUDENT';
+    const school = await userService.createUser(request.body);
+    return response.json(school);
   },
   async update(request, response) {
-    const { usr_id } = request.params;
-    const student = await userService.updateUser(usr_id, request.body);
-    return response.json(student);
+    const userId = request.params.adminId;
+    request.body.role = 'STUDENT';
+    const school = await userService.updateUser(userId, request.body);
+    return response.json(school);
   },
   async delete(request, response) {
-    const { usr_id } = request.params;
-    const result = await userService.deleteSchool(usr_id);
+    const userId = request.params.adminId;
+    const result = await userService.deleteUser(userId, 'STUDENT');
     return response.json(Boolean(result));
   },
 };

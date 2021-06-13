@@ -2,7 +2,6 @@ import os
 import librosa
 import numpy as np
 from scipy import stats
-
 from pickle import load
 from sys import stdin
 
@@ -33,10 +32,8 @@ class Classifier():
             classifier = load(model)
 
         prediction = classifier.predict(X)
-        #print(classifier.predict_proba(X))
+        #classifier.predict_proba(X)
         return self.classes[str(int(stats.mode(prediction)[0][0]))]
-
-#update course set crs_last_user=138, crs_last_update=now() where crs_deleted='F' 
             
 if __name__ == '__main__': 
     try:
