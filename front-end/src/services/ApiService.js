@@ -16,7 +16,7 @@ export async function get(url, params) {
   return (await api.get(url, { params })).data;
 }
 
-export async function post(url, body, config) {
+export async function post(url, body) {
   body = body || {};
   return (await api.post(url, body)).data;
 }
