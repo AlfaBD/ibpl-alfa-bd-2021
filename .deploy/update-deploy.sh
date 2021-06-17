@@ -29,4 +29,6 @@ elif [ $LOCAL = $BASE ]; then
     # Deploying new image
     docker run -d -p 80:80 --name=alfabd alfabd:develop
 
+    # Link to audio's folder 
+    ln -s /home/pc06/alfa-bd/audios /home/pc06/ibpl-alfa-bd-2021/ 
 fi
