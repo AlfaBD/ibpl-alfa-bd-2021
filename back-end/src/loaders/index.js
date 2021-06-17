@@ -11,7 +11,7 @@ const loaders = (async = (settings = {}) => {
       const db = await sequelizeLoader({ env: process.env.NODE_ENV });
 
       console.log('[LOADERS] - Loader files runned');
-      
+
       return { app, db };
     } catch (err) {
       console.error('[LOADERS] - Error running loader files');

@@ -1,7 +1,8 @@
-const express = require("express")
-const bodyParser = require("body-parser")
-const cors = require("cors")
-const routes = require("../api")
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const routes = require('../api');
+const mongoose = require('mongoose');
 
 const expressLoader = async (settings = {}) => {
   try {
@@ -23,6 +24,11 @@ const expressLoader = async (settings = {}) => {
     // app.use(bodyParser.json())
     // deprecated
 
+    mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
     //Load all routes from the server
     //Prefixes all the calls in the API with /api/alfabd
     app.use("/api/alfabd", routes())
@@ -38,4 +44,4 @@ const expressLoader = async (settings = {}) => {
   }
 }
 
-module.exports = expressLoader
+module.exports = expressLoader;
