@@ -12,7 +12,6 @@ module.exports = {
   },
   async store(request, response) {
     request.body.role = "STUDENT"
-    console.log(request.body)
     const school = await userService.createUser(request.body)
     return response.json(school)
   },

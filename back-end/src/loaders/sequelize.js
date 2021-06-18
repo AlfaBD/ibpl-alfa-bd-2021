@@ -54,12 +54,17 @@ const sequelizeLoader = async ({ env }) => {
 
     // Init the pre-defined admin
     const admin = await config.preDefinedAdmin
-    await db.models.User.upsert({
-      usr_id: admin.usr_id,
+    const hasAdmin = await db.models.User.findOne({
       usr_email: admin.usr_email,
-      usr_password_hash: admin.usr_password_hash,
-      usr_primary_role: admin.usr_primary_role,
     })
+    if (!hasAdmin) {
+      db.models.User.create({
+        usr_id: admin.usr_id,
+        usr_email: admin.usr_email,
+        usr_password_hash: admin.usr_password_hash,
+        usr_primary_role: admin.usr_primary_role,
+      })
+    }
 
     return sequelizeConnection
   } catch (err) {

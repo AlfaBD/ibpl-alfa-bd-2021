@@ -48,7 +48,7 @@ module.exports = {
       throw err
     }
   },
-  createUser: async ({ userData }) => {
+  createUser: async ({ userData, role }) => {
     const db = getDb()
     try {
       const createdUser = await db.models.User.create({
