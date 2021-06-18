@@ -48,16 +48,16 @@ module.exports = {
       throw err
     }
   },
-  createUser: async (userData) => {
+  createUser: async ({ userData }) => {
     const db = getDb()
     try {
       const createdUser = await db.models.User.create({
-        usr_cpf: userData.userData.usr_cpf,
-        usr_name: userData.userData.usr_name,
-        usr_email: userData.userData.usr_email,
-        usr_password_hash: userData.userData.usr_password_hash,
-        usr_birth_date: userData.userData.usr_birth_date,
-        usr_primary_role: userData.role,
+        usr_cpf: userData.usr_cpf,
+        usr_name: userData.usr_name,
+        usr_email: userData.usr_email,
+        usr_password_hash: userData.usr_password_hash,
+        usr_birth_date: userData.usr_birth_date,
+        usr_primary_role: role,
       })
       return createdUser
     } catch (err) {
