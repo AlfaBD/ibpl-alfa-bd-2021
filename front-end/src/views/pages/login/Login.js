@@ -47,7 +47,6 @@ const Login = () => {
         username: username,
         password: password,
       });
-      console.log(auth);
       localStorage.setItem("token", auth.token);
       localStorage.setItem("user", auth.user);
       routeChange("dashboard/aluno");
