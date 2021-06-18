@@ -47,6 +47,12 @@ const _nav = [
     to: "/dashboard/admin",
     icon: "cil-pencil",
   },
+  {
+    _tag: "CSidebarNavItem",
+    name: "Notas dos alunos",
+    to: "/professor/notas",
+    icon: "cil-pencil",
+  },
 ];
 
 export default _nav;
