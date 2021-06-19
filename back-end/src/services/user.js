@@ -31,6 +31,18 @@ module.exports = {
         where: {
           usr_primary_role: role,
         },
+        include: {
+          model: db.models.Attendance,
+          as: "attendance",
+          include: {
+            model: db.models.Class,
+            as: "classId",
+            include: {
+              model: db.models.School,
+              as: "school",
+            },
+          },
+        },
       })
       return user
     } catch (err) {

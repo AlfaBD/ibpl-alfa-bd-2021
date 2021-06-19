@@ -24,5 +24,9 @@ module.exports = {
       as: "teacherUserId",
       foreignKey: "teacher_user_id",
     })
+    models.Class.belongsTo(models.School, {
+      as: "school",
+      foreignKey: "sch_id",
+    })
   },
 }

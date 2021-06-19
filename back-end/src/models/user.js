@@ -70,5 +70,9 @@ module.exports = {
       as: "secondaryRole",
       foreignKey: "usr_secondary_role",
     })
+    models.User.hasOne(models.Attendance, {
+      as: "attendance",
+      foreignKey: "student_user_id",
+    })
   },
 }
