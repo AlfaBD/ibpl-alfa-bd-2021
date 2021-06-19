@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React, { lazy } from "react";
 import {
   CButton,
   CCard,
@@ -8,23 +8,32 @@ import {
   CLink,
   CProgress,
   CRow,
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import { Link } from 'react-router-dom'
+} from "@coreui/react";
+import CIcon from "@coreui/icons-react";
+import { Link } from "react-router-dom";
+import { show } from "../../../services/StudentService";
 
 // import MainChartExample from '../charts/MainChartExample.js'
 
-const WidgetsLiga = lazy(() => import('../../widgets/WidgetsLiga.js'))
+const WidgetsLiga = lazy(() => import("../../widgets/WidgetsLiga.js"));
 
 const DashAluno = () => {
+  // alterar essa regra para pegar pelo url :student
+  const user = localStorage.getItem("user");
+
+  try {
+    const student = show(user);
+  } catch (err) {
+    console.log(err);
+    //TODO: Address server errors here
+  }
+
   return (
     <>
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader>
-              TAREFAS
-            </CCardHeader>
+            <CCardHeader>TAREFAS</CCardHeader>
             <CCardBody>
               <table className="table table-hover table-outline mb-0 d-none d-sm-table">
                 <thead className="thead-light">
@@ -61,7 +70,11 @@ const DashAluno = () => {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div> */}
                       </div>
-                      <CProgress className="progress-xs" color="info" value="0" />
+                      <CProgress
+                        className="progress-xs"
+                        color="info"
+                        value="0"
+                      />
                     </td>
                     <td className="text-center">
                       <CIcon height={25} name="cilCalendar" />
@@ -86,7 +99,11 @@ const DashAluno = () => {
                           <strong>35</strong>
                         </div>
                       </div>
-                      <CProgress className="progress-xs" color="secondary" value="35" />
+                      <CProgress
+                        className="progress-xs"
+                        color="secondary"
+                        value="35"
+                      />
                     </td>
                     <td className="text-center">
                       <CIcon height={25} name="cilWarning" />
@@ -98,7 +115,6 @@ const DashAluno = () => {
                   </tr>
                 </tbody>
               </table>
-
             </CCardBody>
           </CCard>
         </CCol>
@@ -106,9 +122,7 @@ const DashAluno = () => {
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader>
-              ATIVIDADES EM ALTA
-            </CCardHeader>
+            <CCardHeader>ATIVIDADES EM ALTA</CCardHeader>
             <CCardBody>
               <table className="table table-hover table-outline mb-0 d-none d-sm-table">
                 <thead className="thead-light">
@@ -145,7 +159,11 @@ const DashAluno = () => {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div> */}
                       </div>
-                      <CProgress className="progress-xs" color="info" value="0" />
+                      <CProgress
+                        className="progress-xs"
+                        color="info"
+                        value="0"
+                      />
                     </td>
                     <td className="text-center">
                       <CIcon height={25} name="cilCalendar" />
@@ -179,7 +197,11 @@ const DashAluno = () => {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div> */}
                       </div>
-                      <CProgress className="progress-xs" color="info" value="0" />
+                      <CProgress
+                        className="progress-xs"
+                        color="info"
+                        value="0"
+                      />
                     </td>
                     <td className="text-center">
                       <CIcon height={25} name="cilCalendar" />
@@ -191,7 +213,6 @@ const DashAluno = () => {
                   </tr>
                 </tbody>
               </table>
-
             </CCardBody>
           </CCard>
         </CCol>
@@ -199,9 +220,7 @@ const DashAluno = () => {
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader>
-              ATIVIDADES REALIZADAS
-            </CCardHeader>
+            <CCardHeader>ATIVIDADES REALIZADAS</CCardHeader>
             <CCardBody>
               <table className="table table-hover table-outline mb-0 d-none d-sm-table">
                 <thead className="thead-light">
@@ -216,7 +235,7 @@ const DashAluno = () => {
                 <tbody>
                   <tr>
                     <td>
-                      <Link to='/aluno/atividade'>
+                      <Link to="/aluno/atividade">
                         <a>289277</a>
                       </Link>
                       {/* <div className="small text-muted">
@@ -236,7 +255,11 @@ const DashAluno = () => {
                           <small className="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
                         </div> */}
                       </div>
-                      <CProgress className="progress-xs" color="success" value="65" />
+                      <CProgress
+                        className="progress-xs"
+                        color="success"
+                        value="65"
+                      />
                     </td>
                     <td className="text-center">
                       <CIcon height={25} name="cilCheckCircle" />
@@ -261,7 +284,11 @@ const DashAluno = () => {
                           <strong>35</strong>
                         </div>
                       </div>
-                      <CProgress className="progress-xs" color="secondary" value="35" />
+                      <CProgress
+                        className="progress-xs"
+                        color="secondary"
+                        value="35"
+                      />
                     </td>
                     <td className="text-center">
                       <CIcon height={25} name="cilWarning" />
@@ -273,7 +300,6 @@ const DashAluno = () => {
                   </tr>
                 </tbody>
               </table>
-
             </CCardBody>
           </CCard>
         </CCol>
@@ -287,13 +313,13 @@ const DashAluno = () => {
               </CButton>
             </CCardHeader>
             <CCardBody>
-              <WidgetsLiga withCharts/>
+              <WidgetsLiga withCharts />
             </CCardBody>
           </CCard>
         </CCol>
       </CRow>
     </>
-  )
-}
+  );
+};
 
-export default DashAluno
+export default DashAluno;
