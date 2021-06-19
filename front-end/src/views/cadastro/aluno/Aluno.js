@@ -20,20 +20,20 @@ import {
 import CIcon from "@coreui/icons-react";
 import { index, store } from "../../../services/StudentService";
 
-const getBadge = (status) => {
-  switch (status) {
-    case "Active":
-      return "success";
-    case "Inactive":
-      return "secondary";
-    case "Pending":
-      return "warning";
-    case "Banned":
-      return "danger";
-    default:
-      return "primary";
-  }
-};
+// const getBadge = (status) => {
+//   switch (status) {
+//     case "Active":
+//       return "success";
+//     case "Inactive":
+//       return "secondary";
+//     case "Pending":
+//       return "warning";
+//     case "Banned":
+//       return "danger";
+//     default:
+//       return "primary";
+//   }
+// };
 
 const Aluno = () => {
   const history = useHistory();
@@ -83,9 +83,11 @@ const Aluno = () => {
   useEffect(() => {
     index().then((response) => {
       setAllStudent(response);
-      console.log(response);
     });
   }, []);
+
+  console.log(allStudent);
+  // console.log(JSON.stringify(allStudent));
 
   return (
     <CRow>
@@ -172,18 +174,19 @@ const Aluno = () => {
           </CCardBody>
         </CCard>
         <CCard>
-          <CCardHeader>
-            Users
-            <small className="text-muted"> example</small>
-          </CCardHeader>
-          <CCardBody>
+          <CCardHeader className="h2">Alunos</CCardHeader>
+          <CCardBody className="text-center">
             <CDataTable
               items={allStudent}
               fields={[
-                { key: "usr_name", _classes: "font-weight-bold" },
-                "usr_cpf",
-                "usr_primary_role",
-                "usr_email",
+                {
+                  key: "usr_name",
+                  label: "Nome",
+                  _classes: "font-weight-bold",
+                },
+                { key: "usr_name", label: "Escola" },
+                { key: "attendance", label: "Turma" },
+                { key: "usr_last_login", label: "Último login" },
               ]}
               hover
               striped
@@ -191,13 +194,6 @@ const Aluno = () => {
               activePage={page}
               clickableRows
               onRowClick={(item) => history.push(`/users/${item.id}`)}
-              scopedSlots={{
-                status: (item) => (
-                  <td>
-                    <CBadge color={getBadge(item.status)}>{item.status}</CBadge>
-                  </td>
-                ),
-              }}
             />
             <CPagination
               activePage={page}

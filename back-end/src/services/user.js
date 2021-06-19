@@ -31,6 +31,18 @@ module.exports = {
         where: {
           usr_primary_role: role,
         },
+        include: {
+          model: db.models.Attendance,
+          as: "attendance",
+          include: {
+            model: db.models.Class,
+            as: "classId",
+            include: {
+              model: db.models.School,
+              as: "school",
+            },
+          },
+        },
       })
       return user
     } catch (err) {
@@ -48,7 +60,7 @@ module.exports = {
       throw err
     }
   },
-  createUser: async ({ userData }) => {
+  createUser: async ({ userData, role }) => {
     const db = getDb()
     try {
       const createdUser = await db.models.User.create({
