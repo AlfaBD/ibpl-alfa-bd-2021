@@ -23,7 +23,7 @@ module.exports = {
       throw err;
     }
   },
-  createSchool: async (schoolData) => {
+  createSchool: async ({schoolData}) => {
     const db = getDb();
     try {
       const createdSchool = await db.models.School.create({

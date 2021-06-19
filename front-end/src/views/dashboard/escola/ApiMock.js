@@ -19,7 +19,7 @@ const mockasync = (data, filter) => {
     })
 }
 
-export default {
+const mocks =  {
     get_classes() {
         return mockasync(classes);
     },
@@ -30,3 +30,5 @@ export default {
         return mockasync(evaluations, classes);
     },
 }
+
+export default mocks;

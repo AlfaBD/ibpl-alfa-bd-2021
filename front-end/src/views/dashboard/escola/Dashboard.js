@@ -69,7 +69,6 @@ class Dashboard extends Component {
   loadDashboard = selectedClasses => {
     this.setState({isLoading: true});
     let classes = [];
-    let tablePersons = [];
     selectedClasses.forEach((element) => {
       classes.push(element.value); 
     });

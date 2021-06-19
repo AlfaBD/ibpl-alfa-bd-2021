@@ -31,29 +31,38 @@ const Login = React.lazy(() => import("./views/pages/login/Login"));
 const routes = [
   { path: "/", exact: true, name: "Home" },
 
-  { path: "/login", name: "Login", component: Login },
+  { 
+    path: "/login", 
+    name: "Login", 
+    component: Login,
+    private: false
+  },
 
   {
     path: "/dashboard/escola",
     name: "Dashboard Escola",
     component: DashboardEscola,
+    private: true
   },
   {
     path: "/dashboard/professor",
     name: "Dashboard",
     component: DashboardProfessor,
+    private: true
   },
   {
     path: "/dashboard/aluno",
     name: "Painel do aluno",
     component: DashboardAluno,
     exact: true,
+    private: true
   },
   {
     path: "/dashboard/admin",
     name: "Painel do Administrador",
     component: DashboardAdmin,
     exact: true,
+    private: true
   },
 
   {
@@ -61,14 +70,15 @@ const routes = [
     name: "Liga dos leitores",
     component: LigaAluno,
     exact: true,
+    private: true
   },
 
-  { path: "/professor/notas", name: "Notas", component: Score, exact: true },
+  { path: "/professor/notas", name: "Notas", component: Score, exact: true, private: true },
 
-  { path: "/cadastro", name: "Cadastro", component: Aluno, exact: true },
-  { path: "/cadastro/aluno", name: "Aluno", component: Aluno },
-  { path: "/cadastro/professor", name: "Professor", component: Professor },
-  { path: "/cadastro/escola", name: "Escola", component: Escola },
+  { path: "/cadastro", name: "Cadastro", component: Aluno, exact: true, private: true  },
+  { path: "/cadastro/aluno", name: "Aluno", component: Aluno, private: true  },
+  { path: "/cadastro/professor", name: "Professor", component: Professor, private: true  },
+  { path: "/cadastro/escola", name: "Escola", component: Escola, private: true  },
 ];
 
 export default routes;

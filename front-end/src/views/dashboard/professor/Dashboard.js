@@ -1,16 +1,13 @@
 import React, { lazy } from 'react'
 import {
-  CBadge,
   CButton,
   CButtonGroup,
   CCard,
   CCardBody,
   CCardFooter,
-  CCardHeader,
   CCol,
   CProgress,
-  CRow,
-  CCallout
+  CRow
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 
@@ -18,9 +15,7 @@ import MainChartExample from '../../charts/MainChartExample.js'
 //import WidgetsIcon from '../../widgets/Widgetsicon.js/index.js'
 
 const WidgetsDropdown = lazy(() => import('../../widgets/WidgetsDropdown_teacher.js'))
-const WidgetsBrand = lazy(() => import('../../widgets/WidgetsBrand_teacher.js'))
 const WidgetsProgressIcon = lazy(() => import('../../widgets/WidgetsProgressIcon_teacher.js'))
-const Widgetsicon = lazy(() => import('../../widgets/Widgetsicon_teacher.js'))
 
 const Dashboard = () => {
   return (

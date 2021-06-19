@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import {
-  CBadge,
   CCard,
   CCardBody,
   CCardHeader,
@@ -70,7 +69,7 @@ const Aluno = () => {
 
     try {
       const createdUser = await store({ userData });
-      alert("Sucessfully created");
+      alert(`Sucessfully created ${createdUser}`);
     } catch (err) {
       console.log(err);
       //TODO: Address server errors here

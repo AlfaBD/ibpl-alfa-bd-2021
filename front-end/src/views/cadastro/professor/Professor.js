@@ -64,6 +64,7 @@ const Professor = () => {
     
     try {
       const createdTeacher = await store({ userData })
+      alert(`Successfully created ${createdTeacher}`)
     } catch (err) {
       console.log(err);
       //TODO: Address server errors here
