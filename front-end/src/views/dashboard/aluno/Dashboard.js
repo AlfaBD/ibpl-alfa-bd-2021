@@ -5,12 +5,10 @@ import {
   CCardBody,
   CCardHeader,
   CCol,
-  CLink,
   CProgress,
   CRow,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { Link } from "react-router-dom";
 import { show } from "../../../services/StudentService";
 
 // import MainChartExample from '../charts/MainChartExample.js'
@@ -22,7 +20,7 @@ const DashAluno = () => {
   const user = localStorage.getItem("user");
 
   try {
-    const student = show(user);
+    show(user);
   } catch (err) {
     console.log(err);
     //TODO: Address server errors here
@@ -235,9 +233,9 @@ const DashAluno = () => {
                 <tbody>
                   <tr>
                     <td>
-                      <Link to="/aluno/atividade">
+                      {/*<Link to="/aluno/atividade">
                         <a>289277</a>
-                      </Link>
+                      </Link>*/}
                       {/* <div className="small text-muted">
                         <span>New</span> | Registered: Jan 1, 2015
                       </div> */}

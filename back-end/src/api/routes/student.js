@@ -1,5 +1,5 @@
 const router = require("express")
-const studentController = require("../../controllers/StudentController")
+const studentController = require("../../controllers/studentController")
 const route = router()
 const tokenAuth = require("../middlewares/token-auth")
 

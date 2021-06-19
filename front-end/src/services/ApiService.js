@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const DEV_HOST = "http://localhost:8000";
-const PROD_HOST = "";
+// const PROD_HOST = "";
 
 const token = localStorage.getItem("token");
 

@@ -12,6 +12,7 @@ const loading = (
 );
 
 const TheContent = () => {
+  const isAuthenticated = localStorage.getItem('token') && localStorage.getItem('token') !== ''
   return (
     <main className="c-main">
       <CContainer fluid>
@@ -19,6 +20,7 @@ const TheContent = () => {
           <Switch>
             {routes.map((route, idx) => {
               return (
+                (route.private && isAuthenticated) || !route.private ? 
                 route.component && (
                   <Route
                     key={idx}
@@ -31,7 +33,7 @@ const TheContent = () => {
                       </CFade>
                     )}
                   />
-                )
+                ) : <Redirect to='/login'/>
               );
             })}
             <Redirect from="/" to="/dashboard" />
