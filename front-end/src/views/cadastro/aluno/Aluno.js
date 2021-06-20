@@ -14,6 +14,7 @@ import {
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
+  CSelect,
 } from "@coreui/react";
 
 import CIcon from "@coreui/icons-react";
@@ -46,6 +47,7 @@ const Aluno = () => {
   const [email, setEmail] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [password, setPassword] = useState("");
+  const [turma, setTurma] = useState("");
 
   const [allStudent, setAllStudent] = useState([]);
 
@@ -165,6 +167,19 @@ const Aluno = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+              </CInputGroup>
+              <CInputGroup className="mb-3">
+                <CInputGroupPrepend>
+                  <CInputGroupText>
+                    <CIcon name="cil-paperclip" />
+                  </CInputGroupText>
+                </CInputGroupPrepend>
+                <CSelect
+                  value={turma}
+                  onChange={(e) => setTurma(e.target.value)}
+                >
+                  <option></option>
+                </CSelect>
               </CInputGroup>
               <CButton type="submit" color="success" block>
                 Criar Conta

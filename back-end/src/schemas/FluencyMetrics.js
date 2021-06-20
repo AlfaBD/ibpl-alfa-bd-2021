@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const FluencyMetrics = new mongoose.Schema(
   {
+    idSchool: Number,
     idProfessor: Number,
     idAluno: Number,
     metrica: String,

@@ -1,33 +1,27 @@
-const router = require("express")
-const route = router()
-const userService = require("../../services/user")
-const tokenAuth = require("../middlewares/token-auth")
+const router = require('express');
+const route = router();
+const teacherController = require('../../controllers/teacherController');
+const tokenAuth = require('../middlewares/token-auth');
 
 module.exports = (app) => {
-
   // Protecting with token auth
   app.use(tokenAuth());
-  
+
   //All routes under this file will be prefixed with /teacher
   app.use('/teacher', route);
 
   //Get all teacher information
-  route.get('/', (req, res, next) => {});
+  route.get('/', teacherController.index);
 
   //Get a specific teacher information
-  route.get('/:teacherId', (req, res, next) => {});
+  route.get('/:teacherId', teacherController.show);
 
   //Create a new teacher
-  route.post('/', async (req, res, next) => {
-    const role = 'TEACHER';
-    const userData = req.body.userData;
-    const createdUser = await userService.createUser({ role, userData });
-    res.status(200).json(createdUser);
-  });
+  route.post('/', teacherController.store);
 
   //Update a teacher information
-  route.put('/:teacherId', (req, res, next) => {});
+  route.put('/:teacherId', teacherController.update);
 
   //Delete a specific teacher
-  route.delete('/:teacherId', (req, res, next) => {});
+  route.delete('/:teacherId', teacherController.delete);
 };

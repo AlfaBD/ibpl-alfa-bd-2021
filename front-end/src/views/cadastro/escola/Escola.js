@@ -19,8 +19,7 @@ import {
 
 import CIcon from "@coreui/icons-react";
 
-import usersData from "./EscolasData";
-import { store } from '../../../services/SchoolService';
+import { index as School, store } from "../../../services/SchoolService";
 
 const getBadge = (status) => {
   switch (status) {
@@ -44,14 +43,15 @@ const Escola = () => {
   const [page, setPage] = useState(currentPage);
 
   // States for form data
-  const [name, setName] = useState('');
-  const [cnpj, setCnpj] = useState('');
-  const [mecCode, setMecCode] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [address, setAddress] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [name, setName] = useState("");
+  const [cnpj, setCnpj] = useState("");
+  const [mecCode, setMecCode] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [schools, setSchools] = useState([]);
 
   const pageChange = (newPage) => {
     currentPage !== newPage && history.push(`/cadastro/escola?page=${newPage}`);
@@ -61,6 +61,12 @@ const Escola = () => {
     currentPage !== page && setPage(currentPage);
   }, [currentPage, page]);
 
+  useEffect(() => {
+    School().then((schools) => {
+      setSchools(schools);
+    });
+  }, []);
+
   const handleSubmit = async (event) => {
     // We will call the proper service to store the Teacher on DB
     const schoolData = {
@@ -68,16 +74,16 @@ const Escola = () => {
       sch_cnpj: cnpj,
       sch_state: state,
       sch_city: city,
-      sch_status: 'ACTIVE', //We can consider this default for new schols
+      sch_status: "ACTIVE", //We can consider this default for new schols
       sch_address: address,
       sch_phoneNumber: phoneNumber,
       sch_mecNumber: mecCode,
-      sch_email: email
-    }
-    console.log(schoolData)
+      sch_email: email,
+    };
+    console.log(schoolData);
     try {
-      const createdSchool = await store({ schoolData })
-      alert(`Successfully created ${createdSchool}`)
+      const createdSchool = await store({ schoolData });
+      alert(`Successfully created ${createdSchool.sch_name}`);
     } catch (err) {
       console.log(err);
       //TODO: Address server errors here
@@ -85,7 +91,7 @@ const Escola = () => {
 
     // On success, we should display a confirmation modal
     event.preventDefault();
-  }
+  };
 
   return (
     <div>
@@ -106,8 +112,8 @@ const Escola = () => {
                     placeholder="Nome"
                     autoComplete="Nome"
                     data-cy="nome"
-                    value={name} 
-                    onChange={e => setName(e.target.value)}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -121,8 +127,8 @@ const Escola = () => {
                     placeholder="CNPJ"
                     autoComplete="CNPJ"
                     data-cy="cnpj"
-                    value={cnpj} 
-                    onChange={e => setCnpj(e.target.value)}
+                    value={cnpj}
+                    onChange={(e) => setCnpj(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -136,8 +142,8 @@ const Escola = () => {
                     placeholder="Código do INEP/MEC"
                     autoComplete=""
                     data-cy="inep"
-                    value={mecCode} 
-                    onChange={e => setMecCode(e.target.value)}
+                    value={mecCode}
+                    onChange={(e) => setMecCode(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -151,8 +157,8 @@ const Escola = () => {
                     placeholder="Logradouro"
                     autoComplete="Logradouro"
                     data-cy="logradouro"
-                    value={address} 
-                    onChange={e => setAddress(e.target.value)}
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -166,8 +172,8 @@ const Escola = () => {
                     placeholder="Município"
                     autoComplete="Municipio"
                     data-cy="municipio"
-                    value={city} 
-                    onChange={e => setCity(e.target.value)}
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -181,8 +187,8 @@ const Escola = () => {
                     placeholder="Estado"
                     autoComplete="Estado"
                     data-cy="estado"
-                    value={state} 
-                    onChange={e => setState(e.target.value)}
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -196,8 +202,8 @@ const Escola = () => {
                     placeholder="E-mail"
                     autoComplete="email"
                     data-cy="email"
-                    value={email} 
-                    onChange={e => setEmail(e.target.value)}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </CInputGroup>
                 <CInputGroup className="mb-3">
@@ -211,13 +217,18 @@ const Escola = () => {
                     placeholder="Número Celular"
                     autoComplete="Numero Celular"
                     data-cy="celular"
-                    value={phoneNumber} 
-                    onChange={e => setPhoneNumber(e.target.value)}
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                   />
                 </CInputGroup>
                 <CRow>
                   <CCol xs="12" sm="12">
-                    <CButton type="submit" color="success" data-cy="submit" block>
+                    <CButton
+                      type="submit"
+                      color="success"
+                      data-cy="submit"
+                      block
+                    >
                       Cadastrar
                     </CButton>
                   </CCol>
@@ -233,17 +244,21 @@ const Escola = () => {
             <CCardHeader>Escolas</CCardHeader>
             <CCardBody>
               <CDataTable
-                items={usersData}
+                items={schools}
                 fields={[
                   {
-                    key: "use_name",
+                    key: "sch_id",
+                    _classes: "font-weight-bold",
+                    label: "ID",
+                  },
+                  {
+                    key: "sch_name",
                     _classes: "font-weight-bold",
                     label: "Nome",
                   },
-                  { key: "cnpj", label: "CNPJ" },
-                  { key: "codigo", label: "Código INEP/MEC" },
-                  { key: "city", label: "Município" },
-                  { key: "state", label: "Estado" },
+                  { key: "sch_city", label: "Município" },
+                  { key: "sch_state", label: "Estado" },
+                  { key: "sch_status", label: "Status" },
                 ]}
                 hover
                 striped
@@ -254,10 +269,10 @@ const Escola = () => {
                   history.push(`/cadastro/escola/${item.id}`)
                 }
                 scopedSlots={{
-                  status: (item) => (
+                  sch_status: (item) => (
                     <td>
-                      <CBadge color={getBadge(item.status)}>
-                        {item.status}
+                      <CBadge color={getBadge(item.sch_status)}>
+                        {item.sch_status}
                       </CBadge>
                     </td>
                   ),
