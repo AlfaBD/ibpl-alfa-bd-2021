@@ -15,7 +15,7 @@ class Classifier():
     
     def __init__(self, path_audio):
         self.n_mfcc = 12
-        self.classes = {'0': 'alto', '1': 'medio', '2': 'baixo'}
+        self.classes = ['alto', 'medio', 'baixo']
         self.path_classifier = os.path.dirname(os.path.abspath(__file__)) + '/classifier.pickle'
         self.path_audio = path_audio
          
@@ -33,7 +33,7 @@ class Classifier():
 
         prediction = classifier.predict(X)
         #classifier.predict_proba(X)
-        return self.classes[str(int(stats.mode(prediction)[0][0]))]
+        return self.classes[int(stats.mode(prediction)[0][0])]
             
 if __name__ == '__main__': 
     try:
