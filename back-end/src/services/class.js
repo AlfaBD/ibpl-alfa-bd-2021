@@ -24,11 +24,15 @@ module.exports = {
     }
   },
   createClass: async (classData) => {
+    console.log(classData.teacher_user_id);
+    console.log(classData.school_user_id);
     const db = getDb();
     try {
       const createdUser = await db.models.Class.create({
         cla_name: classData.cla_name,
         cla_status: classData.cla_status,
+        teacher_user_id: classData.teacher_user_id,
+        school_user_id: classData.school_user_id,
         createdAt: classData.createdAt,
         updatedAt: classData.updatedAt,
         sch_id: classData.sch_id,
