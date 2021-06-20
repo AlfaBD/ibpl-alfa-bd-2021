@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize, DataTypes } = require("sequelize")
 
 module.exports = {
-  tableName: 'Class',
+  tableName: "Class",
   tableAttributes: {
     cla_id: {
       primaryKey: true,
@@ -17,12 +17,16 @@ module.exports = {
   },
   buildAssociations: (models) => {
     models.Class.belongsTo(models.User, {
-      as: 'schoolUserId',
-      foreignKey: 'school_user_id',
-    });
+      as: "schoolUserId",
+      foreignKey: "school_user_id",
+    })
     models.Class.belongsTo(models.User, {
-      as: 'teacherUserId',
-      foreignKey: 'teacher_user_id',
-    });
+      as: "teacherUserId",
+      foreignKey: "teacher_user_id",
+    })
+    models.Class.belongsTo(models.School, {
+      as: "school",
+      foreignKey: "sch_id",
+    })
   },
-};
+}

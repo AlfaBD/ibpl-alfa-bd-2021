@@ -12,6 +12,11 @@ import CIcon from "@coreui/icons-react";
 
 // routes config
 import routes from "../routes";
+import { Link } from "react-router-dom";
+
+function logout() {
+  localStorage.clear();
+}
 
 const TheHeader = () => {
   const dispatch = useDispatch();
@@ -58,6 +63,9 @@ const TheHeader = () => {
           className="border-0 c-subheader-nav m-0 px-0 px-md-3"
           routes={routes}
         />
+        <Link onClick={logout} to="/login">
+          Sair
+        </Link>
       </CSubheader>
     </CHeader>
   );

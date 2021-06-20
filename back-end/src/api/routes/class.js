@@ -1,16 +1,18 @@
 const router = require('express');
 const classController = require('../../controllers/classController');
 const route = router();
+const tokenAuth = require("../middlewares/token-auth")
 
 module.exports = (app) => {
+
+  // Protecting with token auth
+  app.use(tokenAuth());
+
   //All routes under this file will be prefixed with /analysis
   app.use('/analysis', route);
 
   //Process predicition student speech
   route.post('/predict/:studentId/:speech', (req, res, next) => {});
-
-  // We will keep the token authentication disabled for now
-  //app.use(tokenAuth());
 
   //All routes under this file will be prefixed with /class
   app.use('/class', route);

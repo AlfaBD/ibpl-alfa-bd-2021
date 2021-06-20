@@ -8,19 +8,6 @@ import {
 import ChartLineSimple from '../charts/ChartLineSimple'
 import ChartBarSimple from '../charts/ChartBarSimple'
 
-const data = {
-  labels: ['dscdsc', 'dscdc'],
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: 2,
-    },
-    {
-      label: 'Dataset 2',
-      data: 4,
-    }
-  ]
-};
 
 const WidgetsDropdown = () => {
   // render

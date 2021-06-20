@@ -1,8 +1,13 @@
-const router = require('express');
-const route = router();
-const userService = require('../../services/user');
+const router = require("express")
+const route = router()
+const userService = require("../../services/user")
+const tokenAuth = require("../middlewares/token-auth")
 
 module.exports = (app) => {
+
+  // Protecting with token auth
+  app.use(tokenAuth());
+  
   //All routes under this file will be prefixed with /teacher
   app.use('/teacher', route);
 

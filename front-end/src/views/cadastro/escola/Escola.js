@@ -4,7 +4,6 @@ import {
   CButton,
   CCard,
   CCardBody,
-  CCardFooter,
   CForm,
   CInput,
   CInputGroup,
@@ -78,6 +77,7 @@ const Escola = () => {
     console.log(schoolData)
     try {
       const createdSchool = await store({ schoolData })
+      alert(`Successfully created ${createdSchool}`)
     } catch (err) {
       console.log(err);
       //TODO: Address server errors here
