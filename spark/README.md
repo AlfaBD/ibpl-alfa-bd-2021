@@ -6,7 +6,7 @@
 
 Este repositório tem por objetivo relatar as implementações como prova de conceito da análise descritiva dos dados de avaliação da fluencia de leitura tentendo a:
 
- **US#221 - COMO Product Owner DESEJO QUE seja criado para a escola uma análise descritiva utilizando Apache Spark PARA que o dashboard possa conter dados analíticos.**
+ **US#221 - COMO Product Owner DESEJO QUE seja criado para a Escola uma análise descritiva utilizando Apache Spark PARA que o dashboard possa conter dados analíticos.**
 
 ## Get Started (Linux - pyspark - python3)
 
