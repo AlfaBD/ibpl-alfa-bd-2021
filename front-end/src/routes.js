@@ -28,6 +28,7 @@ const DashboardAdmin = React.lazy(() =>
 const LigaAluno = React.lazy(() => import("./views/aluno/liga"));
 const Score = React.lazy(() => import("./views/professor/score"));
 const Login = React.lazy(() => import("./views/pages/login/Login"));
+const Atividade = React.lazy(() => import("./views/aluno/atividade"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -108,6 +109,12 @@ const routes = [
     component: Escola,
     private: true,
   },
+  {
+    path: "/aluno/atividade",
+    name: "Atividade",
+    component: Atividade,
+    private: true
+  }
 ];
 
 export default routes;

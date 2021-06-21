@@ -1,4 +1,5 @@
 const userService = require("../services/user")
+const fs = require('fs')
 
 module.exports = {
   async index(request, response) {
@@ -26,4 +27,18 @@ module.exports = {
     const result = await userService.deleteUser(userId, "STUDENT")
     return response.json(Boolean(result))
   },
+  async uploadAudio(request, response) {
+    const userId = request.params.studentId;
+    const taskId = request.body.taskId;
+    const audioEncodedFile = request.body.file
+    try {
+      fs.writeFileSync(`./src/audios/audio-${userId}-${taskId}.ogg`, Buffer.from(audioEncodedFile.replace('data:audio/webm;codecs=opus;base64,', ''), 'base64'));
+      //TODO: store the proper relations in DB here!
+      response.status(200).json({message: "Success"});
+    } catch (err) {
+      console.log(err)
+      response.status(500).json(err)
+    }
+    
+  }
 }
