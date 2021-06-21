@@ -1,10 +1,19 @@
 const { getDb } = require('../loaders/sequelize');
 
 module.exports = {
-  getAllClasses: async () => {
+  getAllClasses: async (school) => {
     const db = getDb();
     try {
-      const users = db.models.Class.findAll();
+      let users;
+      if (!school) {
+        users = db.models.Class.findAll();
+        return users;
+      }
+      users = db.models.Class.findAll({
+        where: {
+          school_user_id: school,
+        },
+      });
       return users;
     } catch (err) {
       throw err;

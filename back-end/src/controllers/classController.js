@@ -2,7 +2,8 @@ const classService = require('../services/class');
 
 module.exports = {
   async index(request, response) {
-    const schools = await classService.getAllClasses();
+    const school = request.query.school;
+    const schools = await classService.getAllClasses(school);
     return response.json(schools);
   },
   async show(request, response) {
