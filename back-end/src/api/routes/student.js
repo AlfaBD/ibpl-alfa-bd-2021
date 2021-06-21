@@ -1,5 +1,5 @@
 const router = require("express")
-const studentController = require("../../controllers/studentController")
+const studentController = require("../../controllers/StudentController")
 const route = router()
 const tokenAuth = require("../middlewares/token-auth")
 
@@ -24,4 +24,7 @@ module.exports = (app) => {
 
   //Delete a specific student
   route.delete("/:studentId", studentController.delete)
+
+  //Upload an audio file
+  route.post("/audio/:studentId", studentController.uploadAudio)
 }

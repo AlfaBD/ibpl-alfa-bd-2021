@@ -2,6 +2,7 @@ import React from 'react';
 // import './audio-recording.page.styles.scss';
 import ReactPlayer from 'react-player';
 import Recorder from './gravador';
+import { uploadAudio } from '../../services/AudioService'
 // import WordsList from '../../components/words-list/words-list.component';
 // import { uploadAudio } from '../../services/audio-upload.service';
 
@@ -41,17 +42,33 @@ class AudioRecordingPage extends React.Component {
         console.log('chunk of real-time data is: ', recordingBlob)
     }
 
-    onStop = (recordingBlob) => {
+    onStop = async (recordingBlob) => {
         console.log('recorded blob is: ', recordingBlob)
         this.setState({recordedAudioUrl: recordingBlob.blobURL, recordingBlob})
     }
 
     onAudioUpload = async () => {
         console.log('Uploading audio')
-        const audio = this.state.recordingBlob;
-        const student = { id: 1, name: 'Gabriel' }
+        const audioBlob = this.state.recordingBlob.blob;
+        // We will keep the student ID as 1 meanwhile
+        const student = { userId: 1, name: 'Gabriel' }
+        const taskId = 1;
         try {
-            // const result = await uploadAudio({audio, student})
+            const  fileReader = new FileReader();
+            fileReader.onloadend = async function() {
+                const encodedAudio = fileReader.result;
+                try {
+                    const uploadResult = await uploadAudio(encodedAudio, {userId: student.userId, taskId: taskId});
+                    console.log(uploadResult)
+                    alert('Audio salvo com sucesso!')
+                } catch(err) {
+                    alert('Erro ao salvar audio!')
+                }
+                
+
+            }
+            fileReader.readAsDataURL(audioBlob)
+
         } catch (err) {
             console.log(err)
         }
