@@ -19,7 +19,6 @@ import {
 
 import CIcon from "@coreui/icons-react";
 import { index as Teacher, store } from "../../../services/TeacherService";
-import { index as School } from "../../../services/SchoolService";
 
 const getBadge = (status) => {
   switch (status) {
@@ -48,7 +47,6 @@ const Professor = () => {
   const [email, setEmail] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [password, setPassword] = useState("");
-  const [schools, setSchools] = useState([]);
   const [teachers, setTeachers] = useState([]);
 
   const pageChange = (newPage) => {
@@ -58,12 +56,6 @@ const Professor = () => {
   useEffect(() => {
     currentPage !== page && setPage(currentPage);
   }, [currentPage, page]);
-
-  useEffect(() => {
-    School().then((schools) => {
-      setSchools(schools);
-    });
-  }, []);
 
   useEffect(() => {
     Teacher().then((teachers) => {

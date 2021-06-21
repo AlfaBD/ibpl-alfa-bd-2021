@@ -19,6 +19,12 @@ export async function updateClass() {
   return update("/class");
 }
 
+export async function find(id) {
+  return get("/class", {
+    school: id,
+  });
+}
+
 // Endpoints Dahsboard
 export async function get_classes() {
   return get("/classes");

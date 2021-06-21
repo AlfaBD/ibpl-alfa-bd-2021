@@ -53,7 +53,7 @@ class ExecuteMock():
         c.execute('DELETE FROM Schools WHERE sch_id > 0;')
         
         c = self.con.cursor()
-        c.execute('DELETE FROM Users WHERE usr_id > 0;')
+        c.execute('DELETE FROM Users WHERE usr_primary_role != \'ADMIN\';')
         
         c = self.con.cursor()
         c.execute('COMMIT;')

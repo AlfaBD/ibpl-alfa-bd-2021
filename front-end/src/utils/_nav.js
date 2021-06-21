@@ -1,12 +1,6 @@
 const _nav = [
   {
     _tag: "CSidebarNavItem",
-    name: "Login",
-    to: "/login",
-    icon: "cil-pencil",
-  },
-  {
-    _tag: "CSidebarNavItem",
     name: "Escolas",
     to: "/cadastro/escola",
     icon: "cil-pencil",
