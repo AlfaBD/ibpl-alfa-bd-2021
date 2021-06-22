@@ -18,11 +18,11 @@ const expressLoader = async (settings = {}) => {
     app.use(require("morgan")("dev"))
 
     //Middleware that parses req.body in JSON
-    app.use(express.urlencoded({ extended: true }))
-    app.use(express.json())
+    app.use(express.urlencoded({ extended: true, limit: '50mb' }))
+    app.use(express.json({limit: '50mb'}))
+    // deprecated
     // app.use(bodyParser.urlencoded({ extended: false }))
     // app.use(bodyParser.json())
-    // deprecated
 
     mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
