@@ -1,4 +1,6 @@
 const userService = require("../services/user")
+const fs = require('fs')
+const AnalysisController = require("./AnalysisController")
 
 module.exports = {
   async index(request, response) {
@@ -26,4 +28,21 @@ module.exports = {
     const result = await userService.deleteUser(userId, "STUDENT")
     return response.json(Boolean(result))
   },
+  async uploadAudio(request, response) {
+    const userId = request.params.studentId;
+    const taskId = request.body.taskId;
+    const audioEncodedFile = request.body.file
+    const audioPath = `./src/audios/audio-${userId}-${taskId}.ogg`;
+    try {
+      fs.writeFileSync(audioPath, Buffer.from(audioEncodedFile.replace('data:audio/webm;codecs=opus;base64,', ''), 'base64'));
+      //TODO: store the proper relations in DB here!
+      //We will send the result back to the client and start the fluency analysis
+      response.status(200).json({message: "Success"});
+      AnalysisController.predict(request, response, {}, { file: { path: audioPath }});
+    } catch (err) {
+      console.log(err)
+      response.status(500).json(err)
+    }
+    
+  }
 }

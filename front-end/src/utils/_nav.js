@@ -53,6 +53,12 @@ const _nav = [
     to: "/professor/notas",
     icon: "cil-puzzle",
   },
+  {
+    _tag: "CSidebarNavItem",
+    name: "Atividades",
+    to: "/aluno/atividade",
+    icon: "cil-puzzle",
+  }
 ];
 
 export default _nav;

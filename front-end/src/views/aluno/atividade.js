@@ -1,18 +1,11 @@
-import React, { lazy } from 'react'
+import React from 'react'
 import {
-  CBadge,
-  CButton,
-  CButtonGroup,
   CCard,
   CCardBody,
-  CCardFooter,
   CCardHeader,
   CCol,
-  CProgress,
   CRow,
-  CCallout
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
 import AudioRecordingPage from '../gravador/audio'
 
 
@@ -27,7 +20,7 @@ const Atividade = () => {
             </CCardHeader>
             <CCardBody>
               <h4>Aperte o microfone e leia o seguinte texto:</h4>
-              <h2>"este é um exemplo de atividade que deverá ser lida pelo aluno"</h2>
+              <h2>"Este é um exemplo de texto a ser lido pelo aluno"</h2>
               <br/>
               <br/>
               <br/>
