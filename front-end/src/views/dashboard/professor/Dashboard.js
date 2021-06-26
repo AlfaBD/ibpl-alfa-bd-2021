@@ -16,6 +16,7 @@ import MainChartExample from '../../charts/MainChartExample.js'
 
 const WidgetsDropdown = lazy(() => import('../../widgets/WidgetsDropdown_teacher.js'))
 const WidgetsProgressIcon = lazy(() => import('../../widgets/WidgetsProgressIcon_teacher.js'))
+const WWidgetsGridComponents = lazy(() => import('../../widgets/WidgetsGridComponents_teacher.js'))
 
 const Dashboard = () => {
   return (
@@ -109,6 +110,7 @@ const Dashboard = () => {
       </CCard>
       <WidgetsDropdown />
       <WidgetsProgressIcon />
+      <WWidgetsGridComponents />
     </>
   )
 }
