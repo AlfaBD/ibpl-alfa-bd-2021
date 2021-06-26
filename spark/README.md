@@ -23,10 +23,10 @@ export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 
 Install dependencies
 ```sh
-pip install jupyter pandas mysql
+pip install jupyter
 ```
 
-Start Spark
+Start spark with jupyter notebook
 ```sh
 $SPARK_HOME/bin/pyspark --jars < your-directory >/spark/packages/mongo-spark-connector_2.12-3.0.1.jar,< your-directory >/spark/packages/bson-4.2.3.jar,< your-directory >/spark/packages/mongodb-driver-core-4.2.3.jar,< your-directory >/spark/packages/mongodb-driver-sync-4.2.3.jar
 ```
