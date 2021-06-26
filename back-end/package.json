@@ -29,7 +29,6 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "cross-env": "^7.0.3",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
@@ -43,6 +42,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "crossenv": "^0.0.2-security",
     "nodemon": "^2.0.7"
   }
 }
