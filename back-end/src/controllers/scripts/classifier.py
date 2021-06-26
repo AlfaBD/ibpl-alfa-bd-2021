@@ -44,5 +44,6 @@ if __name__ == '__main__':
         prediction = Classifier(path_audio).run()
         print (prediction)
     except Exception as error:
-        print (f'Error: {error}\n')
+        print ('Error: ' + str(error) + '\n')
+
     

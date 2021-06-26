@@ -21,6 +21,11 @@ RUN cd back-end && npm install && \
     npm install mysql2 && \
     npm install -g nodemon
 
+# analisys
+RUN apt-get -y install python3-pip && \
+    sudo apt-get install libsndfile1 && \
+    pip3 install -r back-end/src/controllers/scripts/requirements.txt
+
 # Server
 EXPOSE 80
 

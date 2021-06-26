@@ -1,7 +1,6 @@
 
 #!/usr/bin/env bash
 
-
 git fetch --all
 
 UPSTREAM=${1:-'@{u}'}
