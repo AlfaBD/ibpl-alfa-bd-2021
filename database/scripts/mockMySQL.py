@@ -5,7 +5,7 @@ import sys
 import pymysql
 
 from random import randint
-from datetime import date, datetime
+from datetime import datetime
 from faker import Faker
 from pymongo import MongoClient
 

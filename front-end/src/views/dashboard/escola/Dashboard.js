@@ -19,7 +19,6 @@ import {
 
 import MainChartExample from "./SchoolChart.js";
 
-//import api from '../../../services/SchoolService.js'
 import api from "./ApiMock";
 
 import { find as Classes } from "../../../services/ClasseService";
@@ -65,7 +64,6 @@ class Dashboard extends Component {
   loadDashboard = (selectedClasses) => {
     this.setState({ isLoading: true });
     let classes = [];
-    let tablePersons = [];
     selectedClasses.forEach((element) => {
       classes.push(element.value);
     });
@@ -75,7 +73,7 @@ class Dashboard extends Component {
       //this.createChartHistory(result, selectedClasses);
 
       api.get_tasks(classes).then((result) => {
-        //this.setState({tableTasks: result});
+        //this.setState({ tableTasks: result });
         this.setState({ isLoading: false });
       });
     });

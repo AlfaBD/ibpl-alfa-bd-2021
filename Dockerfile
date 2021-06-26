@@ -1,17 +1,14 @@
-FROM node:12-alpine as build
+FROM node:13 as build
 
 # app
 WORKDIR /app
 COPY . /app/
 
 # nginx
-RUN apk update && apk add nginx openrc && \
-    mkdir -p /run/openrc && \
-    touch /run/openrc/softlevel && \
-    rc-update add nginx default && \
-    rc-status && \
-    rm /etc/nginx/conf.d/default.conf
-COPY .deploy/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+RUN apt-get update && apt-get install nginx -y && \
+    /etc/init.d/nginx stop && \
+    rm /etc/nginx/sites-enabled/default
+COPY .deploy/nginx/nginx.conf /etc/nginx/conf.d
 
 # frontend
 RUN cd front-end && npm install && \

@@ -5,15 +5,12 @@ module.exports = {
     const db = getDb();
     try {
       let users;
-      if (!school) {
-        users = db.models.Class.findAll();
-        return users;
-      }
-      users = db.models.Class.findAll({
+      users = await db.models.Class.findAll({
         where: {
           school_user_id: school,
         },
       });
+      users = users.length === 0 ? await db.models.Class.findAll({}) : users;
       return users;
     } catch (err) {
       throw err;
