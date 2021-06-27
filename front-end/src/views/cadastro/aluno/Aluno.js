@@ -19,6 +19,7 @@ import {
 
 import CIcon from "@coreui/icons-react";
 import { index, store } from "../../../services/StudentService";
+import { index as Classes } from "../../../services/ClasseService";
 
 // const getBadge = (status) => {
 //   switch (status) {
@@ -48,6 +49,7 @@ const Aluno = () => {
   const [birthDate, setBirthDate] = useState("");
   const [password, setPassword] = useState("");
   const [turma, setTurma] = useState("");
+  const [classes, setClasses] = useState([]);
 
   const [allStudent, setAllStudent] = useState([]);
 
@@ -58,6 +60,13 @@ const Aluno = () => {
   useEffect(() => {
     currentPage !== page && setPage(currentPage);
   }, [currentPage, page]);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    Classes(user).then((classes) => {
+      setClasses(classes);
+    });
+  }, []);
 
   const handleSubmit = async (event) => {
     // We will call the proper service to store the Teacher on DB
@@ -174,11 +183,13 @@ const Aluno = () => {
                     <CIcon name="cil-paperclip" />
                   </CInputGroupText>
                 </CInputGroupPrepend>
-                <CSelect
-                  value={turma}
-                  onChange={(e) => setTurma(e.target.value)}
-                >
-                  <option></option>
+                <CSelect onChange={(event) => setTurma(event.target.value)}>
+                  <option>Selecione uma Turma</option>
+                  {classes.map((clazz) => (
+                    <option key={clazz.cla_id} value={clazz.cla_id}>
+                      {clazz.cla_name}
+                    </option>
+                  ))}
                 </CSelect>
               </CInputGroup>
               <CButton type="submit" color="success" block>

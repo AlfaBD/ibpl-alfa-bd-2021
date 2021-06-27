@@ -25,6 +25,6 @@ export async function update(url, params) {}
 
 export async function uploadFile(url, body, file) {
   body = body || {};
-  body.file = file
-  return (await api.post(url, body)).data
+  body.file = file;
+  return (await api.post(url, body)).data;
 }

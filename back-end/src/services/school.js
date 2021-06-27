@@ -1,7 +1,7 @@
 const { getDb } = require('../loaders/sequelize');
 
 module.exports = {
-  getAllSchools: async () => {
+  getAllSchools: async (query) => {
     const db = getDb();
     try {
       const schools = db.models.School.findAll();
@@ -23,7 +23,7 @@ module.exports = {
       throw err;
     }
   },
-  createSchool: async ({schoolData}) => {
+  createSchool: async ({ schoolData }) => {
     const db = getDb();
     try {
       const createdSchool = await db.models.School.create({

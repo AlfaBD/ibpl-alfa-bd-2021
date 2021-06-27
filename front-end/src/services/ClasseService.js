@@ -1,7 +1,9 @@
 import { get, post, update } from "./ApiService";
 
-export async function index() {
-  return get("/class");
+export async function index(data) {
+  return get("/class", {
+    school: data,
+  });
 }
 export async function store(data) {
   return post("/class", data);

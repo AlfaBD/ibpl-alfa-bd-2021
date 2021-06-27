@@ -6,6 +6,7 @@ export async function index() {
 export async function store(data) {
   return post("/student", data);
 }
+
 export async function show(data) {
   return get("/student/" + data);
 }

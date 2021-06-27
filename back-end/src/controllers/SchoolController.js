@@ -2,7 +2,8 @@ const schoolService = require('../services/school');
 
 module.exports = {
   async index(request, response) {
-    const schools = await schoolService.getAllSchools();
+    const { query } = request;
+    const schools = await schoolService.getAllSchools(query);
     return response.json(schools);
   },
   async show(request, response) {

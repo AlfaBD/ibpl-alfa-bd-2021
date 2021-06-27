@@ -1,59 +1,56 @@
 import React from "react";
 import { CChartLine } from "@coreui/react-chartjs";
 import { getStyle, hexToRgba } from "@coreui/utils";
+import moment from "moment";
 
-const brandAccuracy = getStyle("accuracy") || "#4dbd74";
-const brandQuickness = getStyle("quickness") || "#20a8d8";
-const brandProsody = getStyle("prosody") || "#f86c6b";
+const low = getStyle("low") || "#f86c6b";
+const middle = getStyle("middle") || "#20a8d8";
+const high = getStyle("high") || "#4dbd74";
 
 const SchoolChart = (attributes) => {
-  const random = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
+  const { data } = attributes;
+  const baixo = data.date ? data.date.baixo : [];
+  const medio = data.date ? data.date.medio : [];
+  const alto = data.date ? data.date.alto : [];
+  const labels = data.date
+    ? data.date.labels.map((data) => moment(data).format("DD/MM/yyyy"))
+    : [];
   const defaultDatasets = (() => {
-    let elements = 27;
-    const data1 = [];
-    const data2 = [];
-    const data3 = [];
-    for (let i = 0; i <= elements; i++) {
-      data1.push(random(50, 200));
-      data2.push(random(80, 100));
-      data3.push(random(80, 100));
-    }
     return [
       {
-        label: "Precisão",
-        backgroundColor: hexToRgba(brandAccuracy, 10),
-        borderColor: brandAccuracy,
-        pointHoverBackgroundColor: brandAccuracy,
+        label: "Baixo",
+        backgroundColor: "transparent",
+        borderColor: low,
+        pointHoverBackgroundColor: low,
         borderWidth: 2,
-        data: data1,
+        data: baixo,
       },
       {
-        label: "Velocidade",
+        label: "Médio",
         backgroundColor: "transparent",
-        borderColor: brandQuickness,
-        pointHoverBackgroundColor: brandQuickness,
+        borderColor: middle,
+        pointHoverBackgroundColor: middle,
         borderWidth: 2,
-        data: data2,
+        data: medio,
       },
       {
-        label: "Prosodia",
-        backgroundColor: "transparent",
-        borderColor: brandProsody,
-        pointHoverBackgroundColor: brandProsody,
+        label: "Alto",
+        backgroundColor: hexToRgba(high, 10),
+        borderColor: high,
+        pointHoverBackgroundColor: high,
         borderWidth: 2,
-        data: data3,
+        data: alto,
       },
     ];
   })();
 
   const defaultOptions = (() => {
     return {
+      width: "600",
+      responsive: true,
       maintainAspectRatio: false,
       legend: {
-        display: false,
+        display: true,
       },
       scales: {
         xAxes: [
@@ -94,36 +91,7 @@ const SchoolChart = (attributes) => {
       {...attributes}
       datasets={defaultDatasets}
       options={defaultOptions}
-      labels={[
-        "Mo",
-        "Tu",
-        "We",
-        "Th",
-        "Fr",
-        "Sa",
-        "Su",
-        "Mo",
-        "Tu",
-        "We",
-        "Th",
-        "Fr",
-        "Sa",
-        "Su",
-        "Mo",
-        "Tu",
-        "We",
-        "Th",
-        "Fr",
-        "Sa",
-        "Su",
-        "Mo",
-        "Tu",
-        "We",
-        "Th",
-        "Fr",
-        "Sa",
-        "Su",
-      ]}
+      labels={labels}
     />
   );
 };
