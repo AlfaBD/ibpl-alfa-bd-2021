@@ -14,6 +14,11 @@ module.exports = {
           attributes: ['sch_name'],
           as: 'school',
         },
+        include: {
+          model: db.models.User,
+          attributes: ['usr_name'],
+          as: 'teacherUserId',
+        },
       });
       users = users.length === 0 ? await db.models.Class.findAll({}) : users;
       return users;
