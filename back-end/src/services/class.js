@@ -9,16 +9,18 @@ module.exports = {
         where: {
           school_user_id: school,
         },
-        include: {
-          model: db.models.School,
-          attributes: ['sch_name'],
-          as: 'school',
-        },
-        include: {
-          model: db.models.User,
-          attributes: ['usr_name'],
-          as: 'teacherUserId',
-        },
+        include: [
+          {
+            model: db.models.School,
+            attributes: ['sch_name'],
+            as: 'school',
+          },
+          {
+            model: db.models.User,
+            attributes: ['usr_name'],
+            as: 'teacherUserId',
+          },
+        ],
       });
       users = users.length === 0 ? await db.models.Class.findAll({}) : users;
       return users;
