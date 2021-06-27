@@ -77,6 +77,7 @@ const Classe = () => {
   useEffect(() => {
     const user = localStorage.getItem("user");
     Classes(user).then((classes) => {
+      console.log(classes)
       setClasses(classes);
     });
   }, []);
@@ -181,8 +182,8 @@ const Classe = () => {
                     _classes: "font-weight-bold",
                     label: "Nome",
                   },
-                  { key: "school_user_id", label: "Escola" },
-                  { key: "teacher_user_id", label: "Professor" },
+                  { key: "sch_name", label: "Escola" },
+                  { key: "usr_name", label: "Professor" },
                   { key: "cla_status", label: "Status" },
                 ]}
                 hover
@@ -194,6 +195,23 @@ const Classe = () => {
                   history.push(`/cadastro/classe/${item.id}`)
                 }
                 scopedSlots={{
+                  sch_name: (item) => (
+                    <td>
+                        {item.school.sch_name}
+                    </td>
+                  ),
+                  usr_name: (item) => (
+                    <td>
+                        {item.teacherUserId.usr_name}
+                    </td>
+                  ),
+                  cla_status: (item) => (
+                    <td>
+                      <CBadge color={getBadge(item.cla_status)}>
+                        {item.cla_status}
+                      </CBadge>
+                    </td>
+                  ),
                   cla_status: (item) => (
                     <td>
                       <CBadge color={getBadge(item.cla_status)}>
