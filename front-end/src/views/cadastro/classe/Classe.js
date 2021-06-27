@@ -52,6 +52,7 @@ const Classe = () => {
   const [classes, setClasses] = useState([]);
   const [teacher, setTeacher] = useState("");
   const [school, setSchool] = useState("");
+  const [user, setUser] = useState();
 
   const pageChange = (newPage) => {
     currentPage !== newPage && history.push(`/cadastro/classe?page=${newPage}`);
@@ -74,7 +75,9 @@ const Classe = () => {
   }, []);
 
   useEffect(() => {
-    Classes().then((classes) => {
+    const user = localStorage.getItem("user");
+    Classes(user).then((classes) => {
+      console.log(classes)
       setClasses(classes);
     });
   }, []);
@@ -87,13 +90,10 @@ const Classe = () => {
       sch_id: school,
       cla_status: "Ativo",
     };
-    console.log(classData);
     try {
       const createdClass = await store(classData);
       alert(`Successfully created ${createdClass.cla_name}`);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
     // On success, we should display a confirmation modal
     event.preventDefault();
   };
@@ -101,11 +101,11 @@ const Classe = () => {
   return (
     <div>
       <CRow className="justify-content-center">
-        <CCol md="12" lg="12" xl="12">
-          <CCard>
+        <CCol md="8" lg="8" xl="8">
+          <CCard className="mx-4">
+            <CCardHeader className="h2">Cadastro de Classe</CCardHeader>
             <CCardBody className="p-4">
               <CForm onSubmit={handleSubmit}>
-                <h1>Classe</h1>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
                     <CInputGroupText>
@@ -166,12 +166,8 @@ const Classe = () => {
               </CForm>
             </CCardBody>
           </CCard>
-        </CCol>
-      </CRow>
-      <CRow className="justify-content-center">
-        <CCol md="12" lg="12" xl="12">
-          <CCard>
-            <CCardHeader>Escolas</CCardHeader>
+          <CCard className="mx-4">
+            <CCardHeader className="h2">Classes</CCardHeader>
             <CCardBody>
               <CDataTable
                 items={classes}
@@ -186,19 +182,36 @@ const Classe = () => {
                     _classes: "font-weight-bold",
                     label: "Nome",
                   },
-                  { key: "school_user_id", label: "Escola" },
-                  { key: "teacher_user_id", label: "Professor" },
+                  { key: "sch_name", label: "Escola" },
+                  { key: "usr_name", label: "Professor" },
                   { key: "cla_status", label: "Status" },
                 ]}
                 hover
                 striped
-                itemsPerPage={5}
+                itemsPerPage={10}
                 activePage={page}
                 clickableRows
                 onRowClick={(item) =>
-                  history.push(`/cadastro/escola/${item.id}`)
+                  history.push(`/cadastro/classe/${item.id}`)
                 }
                 scopedSlots={{
+                  sch_name: (item) => (
+                    <td>
+                        {item.school.sch_name}
+                    </td>
+                  ),
+                  usr_name: (item) => (
+                    <td>
+                        {item.teacherUserId.usr_name}
+                    </td>
+                  ),
+                  cla_status: (item) => (
+                    <td>
+                      <CBadge color={getBadge(item.cla_status)}>
+                        {item.cla_status}
+                      </CBadge>
+                    </td>
+                  ),
                   cla_status: (item) => (
                     <td>
                       <CBadge color={getBadge(item.cla_status)}>
@@ -211,7 +224,7 @@ const Classe = () => {
               <CPagination
                 activePage={page}
                 onActivePageChange={pageChange}
-                pages={5}
+                pages={10}
                 doubleArrows={false}
                 align="center"
               />

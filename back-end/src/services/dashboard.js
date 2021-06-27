@@ -8,12 +8,20 @@ module.exports = {
     const fluencymetrics = await FluencyMetrics.find({});
     return fluencymetrics;
   },
-  countmetrics: async () => {
-    const countmetrics = await CountMetrics.find({});
+  countmetrics: async (query) => {
+    const { schoolId } = query;
+    const countmetrics = await CountMetrics.find().where({
+      idSchool: schoolId,
+    });
     return countmetrics;
   },
-  datemetrics: async () => {
-    const datemetrics = await DateMetrics.find({});
+  datemetrics: async (query) => {
+    const { schoolId } = query;
+    const datemetrics = await DateMetrics.find()
+      .where({
+        idSchool: schoolId,
+      })
+      .sort('date');
     return datemetrics;
   },
   total: async () => {},

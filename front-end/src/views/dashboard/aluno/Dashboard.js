@@ -22,7 +22,6 @@ const DashAluno = () => {
   try {
     show(user);
   } catch (err) {
-    console.log(err);
     //TODO: Address server errors here
   }
 

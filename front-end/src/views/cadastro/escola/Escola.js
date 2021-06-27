@@ -80,12 +80,10 @@ const Escola = () => {
       sch_mecNumber: mecCode,
       sch_email: email,
     };
-    console.log(schoolData);
     try {
       const createdSchool = await store({ schoolData });
       alert(`Successfully created ${createdSchool.sch_name}`);
     } catch (err) {
-      console.log(err);
       //TODO: Address server errors here
     }
 
@@ -96,11 +94,11 @@ const Escola = () => {
   return (
     <div>
       <CRow className="justify-content-center">
-        <CCol md="12" lg="12" xl="12">
-          <CCard>
+        <CCol md="8" lg="8" xl="8">
+          <CCard className="mx-4">
+            <CCardHeader className="h2">Cadastro de Escola</CCardHeader>
             <CCardBody className="p-4">
               <CForm onSubmit={handleSubmit}>
-                <h1>Escola</h1>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
                     <CInputGroupText>
@@ -236,12 +234,8 @@ const Escola = () => {
               </CForm>
             </CCardBody>
           </CCard>
-        </CCol>
-      </CRow>
-      <CRow className="justify-content-center">
-        <CCol md="12" lg="12" xl="12">
-          <CCard>
-            <CCardHeader>Escolas</CCardHeader>
+          <CCard className="mx-4">
+            <CCardHeader className="h2">Escolas</CCardHeader>
             <CCardBody>
               <CDataTable
                 items={schools}
@@ -262,7 +256,7 @@ const Escola = () => {
                 ]}
                 hover
                 striped
-                itemsPerPage={5}
+                itemsPerPage={10}
                 activePage={page}
                 clickableRows
                 onRowClick={(item) =>
@@ -281,7 +275,7 @@ const Escola = () => {
               <CPagination
                 activePage={page}
                 onActivePageChange={pageChange}
-                pages={5}
+                pages={10}
                 doubleArrows={false}
                 align="center"
               />
