@@ -144,7 +144,9 @@ function permissionsByAccesLevelFactory(accessLevel) {
 
 function getNavigation() {
   const user = JSON.parse(localStorage.getItem("userData"));
-  return permissionsByAccesLevelFactory(user.usr_primary_role);
+  const permission =
+    user && permissionsByAccesLevelFactory(user.usr_primary_role);
+  return permission;
 }
 
 export default getNavigation();
