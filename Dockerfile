@@ -23,7 +23,7 @@ RUN cd back-end && npm install && \
 
 # analisys
 RUN apt-get -y install python3-pip && \
-    apt-get install libsndfile1 && \
+    apt-get -y install libsndfile1 && \
     pip3 install -r back-end/src/controllers/scripts/requirements.txt
 
 # Server
