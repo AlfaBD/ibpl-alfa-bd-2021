@@ -20,21 +20,6 @@ import {
 import CIcon from "@coreui/icons-react";
 import { index, store } from "../../../services/StudentService";
 
-// const getBadge = (status) => {
-//   switch (status) {
-//     case "Active":
-//       return "success";
-//     case "Inactive":
-//       return "secondary";
-//     case "Pending":
-//       return "warning";
-//     case "Banned":
-//       return "danger";
-//     default:
-//       return "primary";
-//   }
-// };
-
 const Aluno = () => {
   const history = useHistory();
   const queryPage = useLocation().search.match(/page=([0-9]+)/, "");
@@ -52,11 +37,12 @@ const Aluno = () => {
   const [allStudent, setAllStudent] = useState([]);
 
   const pageChange = (newPage) => {
-    currentPage !== newPage && history.push(`/users?page=${newPage}`);
+    currentPage !== newPage && history.push(`/cadastro/aluno?page=${newPage}`);
   };
 
   useEffect(() => {
     currentPage !== page && setPage(currentPage);
+    console.log(allStudent)
   }, [currentPage, page]);
 
   const handleSubmit = async (event) => {
@@ -87,17 +73,11 @@ const Aluno = () => {
     });
   }, []);
 
-  console.log(allStudent);
-  // console.log(JSON.stringify(allStudent));
-
   return (
-    <CRow>
-      <CCol xl={6}>
+    <CRow className="justify-content-center">
+      <CCol md="8" lg="8" xl="8">
         <CCard className="mx-4">
-          <CCardHeader align="center">
-            <h4>Cadastro de Alunos</h4>
-            <small className="text-muted"></small>
-          </CCardHeader>
+          <CCardHeader className="h2">Cadastro de Aluno</CCardHeader>
           <CCardBody className="p-4">
             <CForm onSubmit={handleSubmit}>
               <CInputGroup className="mb-3">
@@ -187,32 +167,45 @@ const Aluno = () => {
             </CForm>
           </CCardBody>
         </CCard>
-        <CCard>
+        <CCard className="mx-4">
           <CCardHeader className="h2">Alunos</CCardHeader>
           <CCardBody className="text-center">
             <CDataTable
               items={allStudent}
               fields={[
                 {
-                  key: "usr_name",
-                  label: "Nome",
+                  key: "usr_id",
                   _classes: "font-weight-bold",
+                  label: "ID",
                 },
-                { key: "usr_name", label: "Escola" },
-                { key: "attendance", label: "Turma" },
-                { key: "usr_last_login", label: "Último login" },
+                { key: "usr_name", _classes: "font-weight-bold", label: "Aluno" },
+                { key: "sch_name", label: "Escola" },
+                { key: "cla_name", label: "Classe" },
+                { key: "usr_email", label: "Email" },
               ]}
               hover
               striped
-              itemsPerPage={5}
+              itemsPerPage={10}
               activePage={page}
               clickableRows
-              onRowClick={(item) => history.push(`/users/${item.id}`)}
+              onRowClick={(item) => history.push(`/cadastro/aluno/${item.id}`)}
+              scopedSlots={{
+                sch_name: (item) => (
+                  <td>
+                      {item.attendance.classId.school.sch_name}
+                  </td>
+                ),
+                cla_name: (item) => (
+                  <td>
+                      {item.attendance.classId.cla_name}
+                  </td>
+                ),
+              }}
             />
             <CPagination
               activePage={page}
               onActivePageChange={pageChange}
-              pages={5}
+              pages={10}
               doubleArrows={false}
               align="center"
             />

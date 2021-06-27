@@ -25,28 +25,32 @@ module.exports = {
     }
   },
   getUsersByRole: async (role) => {
-    const db = getDb()
+    const db = getDb();
     try {
       const user = db.models.User.findAll({
+        attributes: ['usr_id', 'usr_name', 'usr_email'],
         where: {
           usr_primary_role: role,
         },
         include: {
           model: db.models.Attendance,
-          as: "attendance",
+          as: 'attendance',
+          attributes: ['att_id'],
           include: {
             model: db.models.Class,
-            as: "classId",
+            attributes: ['cla_name'],
+            as: 'classId',
             include: {
               model: db.models.School,
-              as: "school",
+              attributes: ['sch_name'],
+              as: 'school',
             },
           },
         },
-      })
-      return user
+      });
+      return user;
     } catch (err) {
-      throw err
+      throw err;
     }
   },
   getUserByUsername: async ({ username }) => {
