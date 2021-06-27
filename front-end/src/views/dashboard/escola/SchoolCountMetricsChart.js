@@ -9,7 +9,6 @@ const high = getStyle("high") || "#4dbd74";
 const CountMetricsChart = (attributes) => {
   const { data } = attributes;
   const count = data.count ? data.count : [];
-  console.log(count);
   const defaultDatasets = (() => {
     return [
       {

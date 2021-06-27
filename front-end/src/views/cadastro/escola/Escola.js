@@ -80,12 +80,10 @@ const Escola = () => {
       sch_mecNumber: mecCode,
       sch_email: email,
     };
-    console.log(schoolData);
     try {
       const createdSchool = await store({ schoolData });
       alert(`Successfully created ${createdSchool.sch_name}`);
     } catch (err) {
-      console.log(err);
       //TODO: Address server errors here
     }
 

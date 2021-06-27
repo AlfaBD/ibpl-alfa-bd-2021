@@ -7,4 +7,7 @@ module.exports = (app) => {
 
   // Authenticate route
   route.post('/', authenticationController.auth);
+
+  //Get a specific user information
+  route.get('/:userId', authenticationController.show);
 };

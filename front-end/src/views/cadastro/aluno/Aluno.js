@@ -44,7 +44,6 @@ const Aluno = () => {
 
   useEffect(() => {
     currentPage !== page && setPage(currentPage);
-    console.log(allStudent)
   }, [currentPage, page]);
 
   useEffect(() => {
@@ -68,7 +67,6 @@ const Aluno = () => {
       const createdUser = await store({ userData });
       alert(`Sucessfully created ${createdUser}`);
     } catch (err) {
-      console.log(err);
       //TODO: Address server errors here
     }
 
@@ -189,7 +187,11 @@ const Aluno = () => {
                   _classes: "font-weight-bold",
                   label: "ID",
                 },
-                { key: "usr_name", _classes: "font-weight-bold", label: "Aluno" },
+                {
+                  key: "usr_name",
+                  _classes: "font-weight-bold",
+                  label: "Aluno",
+                },
                 { key: "sch_name", label: "Escola" },
                 { key: "cla_name", label: "Classe" },
                 { key: "usr_email", label: "Email" },
@@ -202,15 +204,9 @@ const Aluno = () => {
               onRowClick={(item) => history.push(`/cadastro/aluno/${item.id}`)}
               scopedSlots={{
                 sch_name: (item) => (
-                  <td>
-                      {item.attendance.classId.school.sch_name}
-                  </td>
+                  <td>{item.attendance.classId.school.sch_name}</td>
                 ),
-                cla_name: (item) => (
-                  <td>
-                      {item.attendance.classId.cla_name}
-                  </td>
-                ),
+                cla_name: (item) => <td>{item.attendance.classId.cla_name}</td>,
               }}
             />
             <CPagination

@@ -19,7 +19,6 @@ import {
 import CIcon from "@coreui/icons-react";
 import { index as Teacher, store } from "../../../services/TeacherService";
 
-
 const Professor = () => {
   const history = useHistory();
   const queryPage = useLocation().search.match(/page=([0-9]+)/, "");
@@ -35,7 +34,8 @@ const Professor = () => {
   const [teachers, setTeachers] = useState([]);
 
   const pageChange = (newPage) => {
-    currentPage !== newPage && history.push(`/cadastro/professor?page=${newPage}`);
+    currentPage !== newPage &&
+      history.push(`/cadastro/professor?page=${newPage}`);
   };
 
   useEffect(() => {
@@ -62,7 +62,6 @@ const Professor = () => {
       const createdTeacher = await store({ userData });
       alert(`Successfully created ${createdTeacher}`);
     } catch (err) {
-      console.log(err);
       //TODO: Address server errors here
     }
 
@@ -174,7 +173,9 @@ const Professor = () => {
               itemsPerPage={10}
               activePage={page}
               clickableRows
-              onRowClick={(item) => history.push(`/cadastro/professor/${item.id}`)}
+              onRowClick={(item) =>
+                history.push(`/cadastro/professor/${item.id}`)
+              }
             />
             <CPagination
               activePage={page}

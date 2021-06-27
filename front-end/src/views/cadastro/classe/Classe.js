@@ -89,13 +89,10 @@ const Classe = () => {
       sch_id: school,
       cla_status: "Ativo",
     };
-    console.log(classData);
     try {
       const createdClass = await store(classData);
       alert(`Successfully created ${createdClass.cla_name}`);
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
     // On success, we should display a confirmation modal
     event.preventDefault();
   };
