@@ -52,6 +52,7 @@ const Classe = () => {
   const [classes, setClasses] = useState([]);
   const [teacher, setTeacher] = useState("");
   const [school, setSchool] = useState("");
+  const [user, setUser] = useState();
 
   const pageChange = (newPage) => {
     currentPage !== newPage && history.push(`/cadastro/classe?page=${newPage}`);
@@ -74,7 +75,8 @@ const Classe = () => {
   }, []);
 
   useEffect(() => {
-    Classes().then((classes) => {
+    const user = localStorage.getItem("user");
+    Classes(user).then((classes) => {
       setClasses(classes);
     });
   }, []);

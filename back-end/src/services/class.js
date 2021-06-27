@@ -16,6 +16,7 @@ module.exports = {
       throw err;
     }
   },
+
   getClassById: async ({ classId }) => {
     const db = getDb();
     try {
