@@ -103,11 +103,11 @@ const Classe = () => {
   return (
     <div>
       <CRow className="justify-content-center">
-        <CCol md="12" lg="12" xl="12">
-          <CCard>
+        <CCol md="8" lg="8" xl="8">
+          <CCard className="mx-4">
+            <CCardHeader className="h2">Cadastro de Classe</CCardHeader>
             <CCardBody className="p-4">
               <CForm onSubmit={handleSubmit}>
-                <h1>Classe</h1>
                 <CInputGroup className="mb-3">
                   <CInputGroupPrepend>
                     <CInputGroupText>
@@ -168,12 +168,8 @@ const Classe = () => {
               </CForm>
             </CCardBody>
           </CCard>
-        </CCol>
-      </CRow>
-      <CRow className="justify-content-center">
-        <CCol md="12" lg="12" xl="12">
-          <CCard>
-            <CCardHeader>Escolas</CCardHeader>
+          <CCard className="mx-4">
+            <CCardHeader className="h2">Classes</CCardHeader>
             <CCardBody>
               <CDataTable
                 items={classes}
@@ -194,11 +190,11 @@ const Classe = () => {
                 ]}
                 hover
                 striped
-                itemsPerPage={5}
+                itemsPerPage={10}
                 activePage={page}
                 clickableRows
                 onRowClick={(item) =>
-                  history.push(`/cadastro/escola/${item.id}`)
+                  history.push(`/cadastro/classe/${item.id}`)
                 }
                 scopedSlots={{
                   cla_status: (item) => (
@@ -213,7 +209,7 @@ const Classe = () => {
               <CPagination
                 activePage={page}
                 onActivePageChange={pageChange}
-                pages={5}
+                pages={10}
                 doubleArrows={false}
                 align="center"
               />

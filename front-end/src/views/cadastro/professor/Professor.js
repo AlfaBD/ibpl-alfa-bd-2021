@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import {
-  CBadge,
   CCard,
   CCardBody,
   CCardHeader,
@@ -20,20 +19,6 @@ import {
 import CIcon from "@coreui/icons-react";
 import { index as Teacher, store } from "../../../services/TeacherService";
 
-const getBadge = (status) => {
-  switch (status) {
-    case "Ativo":
-      return "success";
-    case "Inativo":
-      return "secondary";
-    case "Pendente":
-      return "warning";
-    case "Bloqueado":
-      return "danger";
-    default:
-      return "primary";
-  }
-};
 
 const Professor = () => {
   const history = useHistory();
@@ -50,7 +35,7 @@ const Professor = () => {
   const [teachers, setTeachers] = useState([]);
 
   const pageChange = (newPage) => {
-    currentPage !== newPage && history.push(`/users?page=${newPage}`);
+    currentPage !== newPage && history.push(`/cadastro/professor?page=${newPage}`);
   };
 
   useEffect(() => {
@@ -87,12 +72,9 @@ const Professor = () => {
 
   return (
     <CRow className="justify-content-center">
-      <CCol md="12" lg="12" xl="12">
+      <CCol md="6" lg="6" xl="6">
         <CCard className="mx-4">
-          <CCardHeader align="center">
-            <h4>Cadastro de Professores</h4>
-            <small className="text-muted"></small>
-          </CCardHeader>
+          <CCardHeader className="h2">Cadastro de Professor</CCardHeader>
           <CCardBody className="p-4">
             <CForm onSubmit={handleSubmit}>
               <CInputGroup className="mb-3">
@@ -170,10 +152,7 @@ const Professor = () => {
           </CCardBody>
         </CCard>
         <CCard className="mx-4">
-          <CCardHeader align="center">
-            <h4>Lista de Professores</h4>
-            <small className="text-muted"></small>
-          </CCardHeader>
+          <CCardHeader className="h2">Professores</CCardHeader>
           <CCardBody>
             <CDataTable
               items={teachers}
@@ -189,27 +168,18 @@ const Professor = () => {
                   _classes: "font-weight-bold",
                 },
                 { key: "usr_email", label: "Email" },
-                { key: "createdAt", label: "Data de Criação" },
-                { key: "usr_email", label: "Email" },
               ]}
               hover
               striped
-              itemsPerPage={5}
+              itemsPerPage={10}
               activePage={page}
               clickableRows
-              onRowClick={(item) => history.push(`/users/${item.id}`)}
-              scopedSlots={{
-                status: (item) => (
-                  <td>
-                    <CBadge color={getBadge(item.status)}>{item.status}</CBadge>
-                  </td>
-                ),
-              }}
+              onRowClick={(item) => history.push(`/cadastro/professor/${item.id}`)}
             />
             <CPagination
               activePage={page}
               onActivePageChange={pageChange}
-              pages={5}
+              pages={10}
               doubleArrows={false}
               align="center"
             />
