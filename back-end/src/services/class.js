@@ -22,7 +22,20 @@ module.exports = {
           },
         ],
       });
-      users = users.length === 0 ? await db.models.Class.findAll({}) : users;
+      users = users.length === 0 ? await db.models.Class.findAll({
+        include: [
+          {
+            model: db.models.School,
+            attributes: ['sch_name'],
+            as: 'school',
+          },
+          {
+            model: db.models.User,
+            attributes: ['usr_name'],
+            as: 'teacherUserId',
+          },
+        ],
+      }) : users;
       return users;
     } catch (err) {
       throw err;
