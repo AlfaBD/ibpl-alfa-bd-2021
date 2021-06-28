@@ -61,6 +61,7 @@ const Aluno = () => {
       usr_email: email,
       usr_password_hash: password,
       usr_birth_date: birthDate,
+      turma: turma,
     };
 
     try {

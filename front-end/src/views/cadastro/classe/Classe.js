@@ -76,7 +76,6 @@ const Classe = () => {
   useEffect(() => {
     const user = localStorage.getItem("user");
     Classes(user).then((classes) => {
-      console.log(classes)
       setClasses(classes);
     });
   }, []);
@@ -194,16 +193,8 @@ const Classe = () => {
                   history.push(`/cadastro/classe/${item.id}`)
                 }
                 scopedSlots={{
-                  sch_name: (item) => (
-                    <td>
-                        {item.school.sch_name}
-                    </td>
-                  ),
-                  usr_name: (item) => (
-                    <td>
-                        {item.teacherUserId.usr_name}
-                    </td>
-                  ),
+                  sch_name: (item) => <td>{item.school.sch_name}</td>,
+                  usr_name: (item) => <td>{item.teacherUserId.usr_name}</td>,
                   cla_status: (item) => (
                     <td>
                       <CBadge color={getBadge(item.cla_status)}>
