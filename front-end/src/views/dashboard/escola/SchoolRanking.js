@@ -1,5 +1,4 @@
 import { CProgress } from "@coreui/react";
-import CIcon from "@coreui/icons-react";
 
 const SchoolRanking = () => {
   // render
