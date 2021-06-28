@@ -15,7 +15,6 @@ import { find as Classes } from "../../../services/ClasseService";
 import { dateMetrics, countMetrics } from "../../../services/DashboardService";
 
 const WidgetsDropdown = lazy(() => import("./SchoolWidgetDropdown.js"));
-const WidgetsBrand = lazy(() => import("./SchoolWidgetBrand.js"));
 const SchoolRanking = lazy(() => import("./SchoolRanking.js"));
 
 class Dashboard extends Component {

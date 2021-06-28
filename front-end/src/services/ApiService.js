@@ -3,8 +3,6 @@ import axios from "axios";
 const HOST = "http://localhost:8000";
 // const HOST = "http://alfabd.ddns.net";
 
-const token = localStorage.getItem("token");
-
 const api = axios.create({
   baseURL: `${HOST}/api/alfabd`,
 

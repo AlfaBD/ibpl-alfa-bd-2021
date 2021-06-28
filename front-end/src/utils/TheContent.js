@@ -12,15 +12,15 @@ const loading = (
 );
 
 const TheContent = () => {
-  const isAuthenticated = localStorage.getItem('token') && localStorage.getItem('token') !== ''
+  const isAuthenticated =
+    localStorage.getItem("token") && localStorage.getItem("token") !== "";
   return (
     <main className="c-main">
       <CContainer fluid>
         <Suspense fallback={loading}>
           <Switch>
             {routes.map((route, idx) => {
-              return (
-                (route.private && isAuthenticated) || !route.private ? 
+              return (route.private && isAuthenticated) || !route.private ? (
                 route.component && (
                   <Route
                     key={idx}
@@ -33,10 +33,12 @@ const TheContent = () => {
                       </CFade>
                     )}
                   />
-                ) : <Redirect to='/login'/>
+                )
+              ) : (
+                <Redirect to="/login" />
               );
             })}
-            <Redirect from="/" to="/dashboard" />
+            <Redirect from="/" to="/alfabd" />
           </Switch>
         </Suspense>
       </CContainer>

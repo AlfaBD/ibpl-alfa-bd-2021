@@ -6,6 +6,13 @@ import { uploadAudio } from '../../services/AudioService'
 // import WordsList from '../../components/words-list/words-list.component';
 // import { uploadAudio } from '../../services/audio-upload.service';
 
+import {
+    CCol,
+    CRow,
+    CButton,
+  } from "@coreui/react";
+  
+
 // Mocked words for now
 const mockedWords = [
     "Palavra a ser lida pelo aluno",
@@ -91,9 +98,17 @@ class AudioRecordingPage extends React.Component {
                     record={this.state.record}
                     onData={this.onData}
                     onStop={this.onStop} />
+                    <br/>
+                    <br/>
                     <div className="recorder-control">
-                        <button onClick={this.startRecording} type="button">Start</button>
-                        <button onClick={this.stopRecording} type="button">Stop</button>
+                        <CRow className="justify-content-center">
+                            <CCol md="4" lg="4" xl="4">
+                                <CButton onClick={this.startRecording} type="button" color="success" block>Começar</CButton>
+                            </CCol>
+                            <CCol md="4" lg="4" xl="4">
+                                <CButton onClick={this.startRecording} type="button" color="secondary" block>Parar</CButton>
+                            </CCol>
+                        </CRow>
                     </div>
                     <div className="player">
                         <ReactPlayer 
@@ -105,8 +120,14 @@ class AudioRecordingPage extends React.Component {
                         this.state.recordedAudioUrl ? 
                         (
                             <div className="upload-button">
-                                <button type="button" onClick={this.onAudioUpload}>Enviar Resposta</button>
-                                <button type="button" onClick={this.onRecordAgain}>Gravar Novamente</button>
+                                <CRow className="justify-content-center">
+                                    <CCol md="4" lg="4" xl="4">
+                                        <CButton onClick={this.onAudioUpload} type="button" color="success" block>Enviar Resposta</CButton>
+                                    </CCol>
+                                    <CCol md="4" lg="4" xl="4">
+                                        <CButton onClick={this.onRecordAgain} type="button" color="secondary" block>Gravar Novamente</CButton>
+                                    </CCol>
+                                </CRow>
                             </div>
                         )
                         : null

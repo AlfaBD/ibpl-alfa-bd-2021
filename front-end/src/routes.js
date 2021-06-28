@@ -31,36 +31,37 @@ const Login = React.lazy(() => import("./views/pages/login/Login"));
 const Atividade = React.lazy(() => import("./views/aluno/atividade"));
 
 const routes = [
-  { path: "/", exact: true, name: "Home" },
+  { path: "/alfabd", name: "Home" },
 
   {
-    path: "/login",
+    path: "/",
     name: "Login",
+    exact: true,
     component: Login,
     private: false,
   },
 
   {
-    path: "/dashboard/escola",
+    path: "/alfabd/dashboard/escola",
     name: "Dashboard Escola",
     component: DashboardEscola,
     private: true,
   },
   {
-    path: "/dashboard/professor",
+    path: "/alfabd/dashboard/professor",
     name: "Dashboard",
     component: DashboardProfessor,
     private: true,
   },
   {
-    path: "/dashboard/aluno",
+    path: "/alfabd/dashboard/aluno",
     name: "Painel do aluno",
     component: DashboardAluno,
     exact: true,
     private: true,
   },
   {
-    path: "/dashboard/admin",
+    path: "/alfabd/dashboard/admin",
     name: "Painel do Administrador",
     component: DashboardAdmin,
     exact: true,
@@ -68,7 +69,7 @@ const routes = [
   },
 
   {
-    path: "/aluno/liga",
+    path: "/alfabd/aluno/liga",
     name: "Liga dos leitores",
     component: LigaAluno,
     exact: true,
@@ -76,7 +77,7 @@ const routes = [
   },
 
   {
-    path: "/professor/notas",
+    path: "/alfabd/professor/notas",
     name: "Notas",
     component: Score,
     exact: true,
@@ -84,37 +85,42 @@ const routes = [
   },
 
   {
-    path: "/cadastro",
+    path: "/alfabd/cadastro",
     name: "Cadastro",
     component: Aluno,
     exact: true,
     private: true,
   },
-  { path: "/cadastro/aluno", name: "Aluno", component: Aluno, private: true },
   {
-    path: "/cadastro/classe",
+    path: "/alfabd/cadastro/aluno",
+    name: "Aluno",
+    component: Aluno,
+    private: true,
+  },
+  {
+    path: "/alfabd/cadastro/classe",
     name: "Classe",
     component: Classe,
     private: true,
   },
   {
-    path: "/cadastro/professor",
+    path: "/alfabd/cadastro/professor",
     name: "Professor",
     component: Professor,
     private: true,
   },
   {
-    path: "/cadastro/escola",
+    path: "/alfabd/cadastro/escola",
     name: "Escola",
     component: Escola,
     private: true,
   },
   {
-    path: "/aluno/atividade",
+    path: "/alfabd/aluno/atividade",
     name: "Atividade",
     component: Atividade,
-    private: true
-  }
+    private: true,
+  },
 ];
 
 export default routes;

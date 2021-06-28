@@ -1,12 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { CWidgetBrand, CRow, CCol, CCard, CCardBody } from "@coreui/react";
+import { CWidgetBrand, CRow, CCol } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import ChartLineSimple from "../../charts/ChartLineSimple";
 
 const SchoolWidgetBrand = ({ withCharts }) => {
   // render
-
   return (
     <CRow>
       <CCol sm="6" lg="3">
