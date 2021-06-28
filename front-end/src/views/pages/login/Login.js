@@ -23,7 +23,8 @@ const Login = () => {
   const history = useHistory();
 
   const routeChange = (data) => {
-    let path = "/" + data;
+    let path = `/alfabd/${data}`;
+    console.log(path);
     history.push(path);
   };
 
