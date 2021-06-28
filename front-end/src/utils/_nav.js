@@ -3,43 +3,43 @@ function adminPages() {
     {
       _tag: "CSidebarNavItem",
       name: "Escolas",
-      to: "/cadastro/escola",
+      to: "/alfabd/cadastro/escola",
       icon: "cil-pencil",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Classes",
-      to: "/cadastro/classe",
+      to: "/alfabd/cadastro/classe",
       icon: "cil-pencil",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Professores",
-      to: "/cadastro/professor",
+      to: "/alfabd/cadastro/professor",
       icon: "cil-pencil",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Alunos",
-      to: "/cadastro/aluno",
+      to: "/alfabd/cadastro/aluno",
       icon: "cil-pencil",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Dashboard Admin",
-      to: "/dashboard/admin",
+      to: "/alfabd/dashboard/admin",
       icon: "cil-puzzle",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Notas dos alunos",
-      to: "/professor/notas",
+      to: "/alfabd/professor/notas",
       icon: "cil-puzzle",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Atividades",
-      to: "/aluno/atividade",
+      to: "/alfabd/aluno/atividade",
       icon: "cil-puzzle",
     },
   ];
@@ -50,37 +50,37 @@ function schoolPages() {
     {
       _tag: "CSidebarNavItem",
       name: "Classes",
-      to: "/cadastro/classe",
+      to: "/alfabd/cadastro/classe",
       icon: "cil-pencil",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Professores",
-      to: "/cadastro/professor",
+      to: "/alfabd/cadastro/professor",
       icon: "cil-pencil",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Alunos",
-      to: "/cadastro/aluno",
+      to: "/alfabd/cadastro/aluno",
       icon: "cil-pencil",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Dashboard Escola",
-      to: "/dashboard/escola",
+      to: "/alfabd/dashboard/escola",
       icon: "cil-puzzle",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Notas dos alunos",
-      to: "/professor/notas",
+      to: "/alfabd/professor/notas",
       icon: "cil-puzzle",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Atividades",
-      to: "/aluno/atividade",
+      to: "/alfabd/aluno/atividade",
       icon: "cil-puzzle",
     },
   ];
@@ -91,19 +91,19 @@ function teacherPages() {
     {
       _tag: "CSidebarNavItem",
       name: "Dashboard Professor",
-      to: "/dashboard/professor",
+      to: "/alfabd/dashboard/professor",
       icon: "cil-puzzle",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Notas dos alunos",
-      to: "/professor/notas",
+      to: "/alfabd/professor/notas",
       icon: "cil-puzzle",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Atividades",
-      to: "/aluno/atividade",
+      to: "/alfabd/aluno/atividade",
       icon: "cil-puzzle",
     },
   ];
@@ -114,19 +114,19 @@ function studentPages() {
     {
       _tag: "CSidebarNavItem",
       name: "Dashboard Aluno",
-      to: "/dashboard/aluno",
+      to: "/alfabd/dashboard/aluno",
       icon: "cil-puzzle",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Notas dos alunos",
-      to: "/professor/notas",
+      to: "/alfabd/professor/notas",
       icon: "cil-puzzle",
     },
     {
       _tag: "CSidebarNavItem",
       name: "Atividades",
-      to: "/aluno/atividade",
+      to: "/alfabd/aluno/atividade",
       icon: "cil-puzzle",
     },
   ];
@@ -144,9 +144,7 @@ function permissionsByAccesLevelFactory(accessLevel) {
 
 function getNavigation() {
   const user = JSON.parse(localStorage.getItem("userData"));
-  const permission =
-    user && permissionsByAccesLevelFactory(user.usr_primary_role);
-  return permission;
+  return permissionsByAccesLevelFactory(user.usr_primary_role);
 }
 
 export default getNavigation();
