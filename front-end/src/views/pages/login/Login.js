@@ -16,12 +16,8 @@ import {
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 
-import background from "../../../img/background.png";
 import { authenticate } from "../../../services/StudentService";
-
-const sectionStyle = {
-  backgroundImage: "url(" + background + ")",
-};
+import { index as getUserById } from "../../../services/UserService";
 
 const Login = () => {
   const history = useHistory();
@@ -34,6 +30,16 @@ const Login = () => {
   // States for form data
   const [usr_email, setName] = useState("");
   const [usr_password_hash, setPassword] = useState("");
+
+  const mainPageFactory = (accessLevel) => {
+    const mainPage = {
+      ADMIN: "dashboard/admin",
+      SCHOOL: "dashboard/escola",
+      TEACHER: "dashboard/professor",
+      STUDENT: "dashboard/aluno",
+    };
+    return mainPage[accessLevel];
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,9 +54,11 @@ const Login = () => {
       });
       localStorage.setItem("token", auth.token);
       localStorage.setItem("user", auth.user);
-      routeChange("dashboard/aluno");
+      const user = await getUserById(auth.user);
+      localStorage.setItem("userData", JSON.stringify(user));
+      const path = mainPageFactory(user.usr_primary_role);
+      routeChange(path);
     } catch (err) {
-      console.log(err);
       //TODO: Address server errors here
     }
 
@@ -59,10 +67,7 @@ const Login = () => {
 
   return (
     // eslint-disable-next-line no-template-curly-in-string
-    <div
-      className="c-app c-default-layout flex-row align-items-center"
-      style={sectionStyle}
-    >
+    <div className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md="8">

@@ -13,6 +13,16 @@ module.exports = {
   getUserById: async (userId, role) => {
     const db = getDb();
     try {
+      if (!role) {
+        const user = db.models.User.findOne({
+          attributes: ['usr_id', 'usr_name', 'usr_primary_role'],
+          where: {
+            usr_id: userId,
+          },
+        });
+        return user;
+      }
+
       const user = db.models.User.findAll({
         where: {
           usr_id: userId,
