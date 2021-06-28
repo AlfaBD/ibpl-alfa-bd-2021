@@ -98,6 +98,8 @@ class AudioRecordingPage extends React.Component {
                     record={this.state.record}
                     onData={this.onData}
                     onStop={this.onStop} />
+                    <br/>
+                    <br/>
                     <div className="recorder-control">
                         <CRow className="justify-content-center">
                             <CCol md="4" lg="4" xl="4">
