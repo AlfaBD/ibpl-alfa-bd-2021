@@ -15,12 +15,12 @@ const Atividade = () => {
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader>
+            <CCardHeader className="h4">
               ATIVIDADE nº 5678
             </CCardHeader>
             <CCardBody>
               <h4>Aperte o microfone e leia o seguinte texto:</h4>
-              <h2>"Este é um exemplo de texto a ser lido pelo aluno"</h2>
+              <h2>"A casa do avô de Pedro era uma dessas casas antigas, grandes, que têm dois andares e mais um velho porão. Um dia Pedro resolveu ir lá embaixo procurar uns patins."</h2>
               <br/>
               <br/>
               <br/>

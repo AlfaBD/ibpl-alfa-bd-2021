@@ -44,7 +44,6 @@ const Aluno = () => {
 
   useEffect(() => {
     currentPage !== page && setPage(currentPage);
-    console.log(allStudent)
   }, [currentPage, page]);
 
   useEffect(() => {

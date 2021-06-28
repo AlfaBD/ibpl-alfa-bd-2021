@@ -52,7 +52,6 @@ const Classe = () => {
   const [classes, setClasses] = useState([]);
   const [teacher, setTeacher] = useState("");
   const [school, setSchool] = useState("");
-  const [user, setUser] = useState();
 
   const pageChange = (newPage) => {
     currentPage !== newPage && history.push(`/cadastro/classe?page=${newPage}`);
@@ -206,13 +205,6 @@ const Classe = () => {
                   usr_name: (item) => (
                     <td>
                         {item.teacherUserId.usr_name}
-                    </td>
-                  ),
-                  cla_status: (item) => (
-                    <td>
-                      <CBadge color={getBadge(item.cla_status)}>
-                        {item.cla_status}
-                      </CBadge>
                     </td>
                   ),
                   cla_status: (item) => (
